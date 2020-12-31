@@ -82,6 +82,7 @@ password VARCHAR(200) NOT NULL
 
 INSERT INTO mentor (name, email, password) VALUES ('Mentor', 'mentor@cyf.com', '1234');
 INSERT INTO mentor (name, email, password) VALUES ('Mentor two', 'mentorTwo@cyf.com', '1234');
+INSERT INTO mentor (name, email, password) VALUES ('Mentor three', 'mentorThree@cyf.com', '1234');
 
 INSERT INTO region (name, mentor_id) VALUES ('West Midlands', 1);
 INSERT INTO region (name, mentor_id) VALUES ('West Midlands', 2);
