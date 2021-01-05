@@ -74,7 +74,6 @@ CREATE TABLE users (
 id SERIAL PRIMARY KEY,
 name  VARCHAR(100) NOT NULL ,
 email VARCHAR(100)NOT NULL,
-batch VARCHAR(50),
 password VARCHAR(200) NOT NULL
 );
 
@@ -108,6 +107,6 @@ INSERT INTO topic (name, student_subject_id) VALUES ('Understand what parent and
 INSERT INTO grade (vote, topic_id) VALUES (25, 1);
 INSERT INTO grade (vote, topic_id) VALUES (50, 2);
 
-INSERT INTO users (name, email,batch, password) VALUES('Selina','selina@yahoo.com','westmidland1', '$2b$10$dmm9x4XcBFPPqz5WqTGIUeu3DqzHEHRCU/MI01Ru0ihwuAvD99UGa');
-INSERT INTO users (name, email,batch, password) VALUES('Mursel','mursel@yahoo.com','westmidland1', '$2b$10$hFFPVUlRVXgLwsJ0RU8Tueg/awvz.MPD270QeecW.qCtNvX/aWat2');
-INSERT INTO users (name, email,batch, password) VALUES('Osman','osman@yahoo.com','westmidland1','$2b$10$RAWB8u5qVkC2V2mD5Al1jOF9nQfMWIoY7Y1WRSZ53S.N7C0H/Fcpm');
+INSERT INTO users (name, email, password) VALUES('Selina','selina@yahoo.com', '$2b$10$dmm9x4XcBFPPqz5WqTGIUeu3DqzHEHRCU/MI01Ru0ihwuAvD99UGa');
+INSERT INTO users (name, email,password) VALUES('Mursel','mursel@yahoo.com','$2b$10$hFFPVUlRVXgLwsJ0RU8Tueg/awvz.MPD270QeecW.qCtNvX/aWat2');
+INSERT INTO users (name, email,password) VALUES('Osman','osman@yahoo.com','$2b$10$RAWB8u5qVkC2V2mD5Al1jOF9nQfMWIoY7Y1WRSZ53S.N7C0H/Fcpm');

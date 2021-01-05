@@ -64,10 +64,10 @@ router.post('/token', async (req, res) => {
 });
 
 router.post('/register', async (req, res) => {
-  let { name, email, batch, password, password2 } = req.body;
+  let { name, email, password, password2 } = req.body;
   let errors = [];
 
-  if (!name || !email || !batch || !password || !password2) {
+  if (!name || !email || !password || !password2) {
     errors.push({ message: 'Please fill all of the fields' });
   }
 
@@ -98,10 +98,10 @@ router.post('/register', async (req, res) => {
           res.json({ error: { message: 'Email is already registered' } });
         } else {
           pool.query(
-            `insert into users (name, email,batch, password)
-              values($1, $2, $3,$4)
-              returning id, password, batch,email `,
-            [name, email,batch, hashedPassword],
+            `insert into users (name, email, password)
+              values($1, $2, $3)
+              returning id, password, email `,
+            [name, email, hashedPassword],
             (err, results) => {
               if (err) {
                 throw err;
