@@ -3,7 +3,6 @@ import "./Footer.scss"
 const Footer = () => {
     return (
       <footer className="footer">
-
         <div className="footerCopyRight">
           CYF Final Project , Team 404 Not Found
         </div>
@@ -19,9 +18,8 @@ const Footer = () => {
           </a>{' '}
           | 2020 Copyright{' '}
         </div>
-
       </footer>
-      
+
     );
 };
 
