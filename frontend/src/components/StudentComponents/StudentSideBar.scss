@@ -1,0 +1,20 @@
+.user_icon_container{
+    & .user_icon_image{
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        display: flex;
+        width: 20rem;
+        height: 20rem;
+        background-color: #f1b7b7;
+        border-radius: 100%;
+        & img{
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+            height: 50%;
+            width: 50%;
+            }
+    }
+   
+}
