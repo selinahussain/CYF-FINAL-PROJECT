@@ -5,7 +5,7 @@ import "./StudentSideBar.scss";
 
 export default function StudentSideBar() {
     return (
-        <div className = "sidebar">
+        <div className = "container">
             <div className = "user_icon_container">
                 <div className="user_icon_image">
                 <img 
@@ -22,7 +22,7 @@ export default function StudentSideBar() {
             </div><hr/>
             <div>
                 <img 
-                className = "sidebarStudentImg"
+                className = ""
                 alt = ""
                 src = {StudentImage}
                 />
