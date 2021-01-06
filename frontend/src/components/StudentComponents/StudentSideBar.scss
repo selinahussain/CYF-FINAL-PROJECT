@@ -4,8 +4,8 @@
         align-items: center;
         align-content: center;
         display: flex;
-        width: 20rem;
-        height: 20rem;
+        width: 10rem;
+        height: 10rem;
         background-color: #f1b7b7;
         border-radius: 100%;
         & img{
@@ -17,4 +17,11 @@
             }
     }
    
+}
+.sidebar{
+    width: 30%;
+}
+.sidebarStudentImg{
+    height: 600%;
+    width: 60%;
 }

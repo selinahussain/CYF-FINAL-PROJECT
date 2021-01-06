@@ -26,6 +26,21 @@ router.get('/topic', function (req, res) {
   });
 });
 
+
+router.get('/subjects', function (req, res) {
+  let selectCohorts = `SELECT * FROM  subject `;
+  pool.query(selectCohorts, (err, results) => {
+    if (err) {
+      throw err;
+    }
+
+    if (results.rows.length > 0) {
+      res.json(results.rows);
+    }
+  });
+});
+
+
 router.get('/classes', function (req, res) {
   let selectCohorts = `SELECT * FROM  cohort `;
   pool.query(selectCohorts, (err, results) => {
