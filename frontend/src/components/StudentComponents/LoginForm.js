@@ -13,7 +13,7 @@ const LoginForm = () => {
 
   const onSubmit = (data) => {
     auth.signin(data.email, data.password, () => {
-      history.replace({ pathname: '/classes' });
+      history.replace({ pathname: '/student_main' });
     });
   };
 

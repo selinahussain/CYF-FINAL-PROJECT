@@ -4,6 +4,8 @@ import {Class, Header, PrivateRoute, Home, RegisterPage } from "./components";
 import StudentMainPage from './Pages/StudentPages/StudentMainPage'
 import { ProvideAuth } from "../src/Auth/use-auth";
 import Footer from "./components/FooterComponent/Footer";
+import StudentSingleModulePage from "./Pages/StudentPages/StudentSingleModulePage";
+
 
 function App() {
 	return (
@@ -21,11 +23,11 @@ function App() {
               <RegisterPage />
               
 						</Route>
-						<PrivateRoute path="/classes">
+						<PrivateRoute path="/student_main">
 							<StudentMainPage />
 						</PrivateRoute>
-						<PrivateRoute path="/class/:className">
-							{/* <Class /> */}
+						<PrivateRoute path="/modules/moduleName">
+							<StudentSingleModulePage />
 						</PrivateRoute>
 					</Switch>
 				</Container>

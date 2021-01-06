@@ -97,6 +97,11 @@ INSERT INTO student (name, email, github, linkedin, phone, cohort_id) VALUES ('M
 
 INSERT INTO subject (name) VALUES ('HTML/CSS');
 INSERT INTO subject (name) VALUES ('Javascript');
+INSERT INTO subject (name) VALUES ('Git-GitHub');
+INSERT INTO subject (name) VALUES ('React');
+INSERT INTO subject (name) VALUES ('NodeJS');
+INSERT INTO subject (name) VALUES ('PostgreSQL');
+INSERT INTO subject (name) VALUES ('MongoDB');
 
 INSERT INTO student_subject (student_id, subject_id) VALUES (1, 1);
 INSERT INTO student_subject (student_id, subject_id) VALUES (2, 1);
