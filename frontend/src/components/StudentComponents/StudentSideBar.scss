@@ -1,1 +1,38 @@
+.wrapper {
+  width: 20%;
+  flex-direction: column;
+  text-align: center;
+}
+.user_icon_container {
+  & .user_icon_image {
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    display: flex;
+    width: 10rem;
+    height: 10rem;
+    background-color: #f1b7b7;
+    border-radius: 100%;
+    & img {
+      height: 60%;
+      width: 50%;
+    }
+  }
+}
 
+h3 {
+  margin-top: 20px;
+}
+
+hr {
+  border-top: 3px solid ;
+}
+
+.student_icon_container {
+  margin-top: 3rem;
+  width: 100%;
+  & img {
+    height: 100%;
+    width: 100%;
+  }
+}
