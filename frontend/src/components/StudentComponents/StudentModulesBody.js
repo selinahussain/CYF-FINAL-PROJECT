@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import {Route,Link, Switch,Redirect,Router} from 'react-router-dom';
+import {Route,Link} from 'react-router-dom';
 import useFetch from '../../Auth/useFetch';
 import Spinner from '../UI/Spinner';
 import "./StudentModulesBody.scss";

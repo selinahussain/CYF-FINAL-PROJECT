@@ -6,6 +6,8 @@ drop table if exists student;
 drop table if exists module;
 drop table if exists topic;
 drop table if exists grade;
+drop table if exists subject;
+drop table if exists users;
 
 
 
@@ -47,19 +49,19 @@ CREATE TABLE student (
 );
 
 CREATE TABLE subject (
-    subject_id SERIAL PRIMARY KEY,
-    name VARCHAR(50)
+   name  VARCHAR(50) PRIMARY KEY
 );
 
 CREATE TABLE student_subject (
     student_subject_id SERIAL PRIMARY KEY,
     student_id INT REFERENCES student(id),
-    subject_id INT REFERENCES subject(subject_id)
+    subject_name VARCHAR REFERENCES subject(name)
 );
 
 CREATE TABLE topic (
     topic_id SERIAL PRIMARY KEY,
     name VARCHAR(50),
+    subject_name VARCHAR REFERENCES subject(name),
     student_subject_id INT REFERENCES student_subject(student_subject_id)
 );
 
@@ -103,11 +105,32 @@ INSERT INTO subject (name) VALUES ('NodeJS');
 INSERT INTO subject (name) VALUES ('PostgreSQL');
 INSERT INTO subject (name) VALUES ('MongoDB');
 
-INSERT INTO student_subject (student_id, subject_id) VALUES (1, 1);
-INSERT INTO student_subject (student_id, subject_id) VALUES (2, 1);
+INSERT INTO student_subject (student_id, subject_name) VALUES (1, 'HTML_CSS');
+INSERT INTO student_subject (student_id, subject_name) VALUES (2, 'REACTJS');
 
-INSERT INTO topic (name, student_subject_id) VALUES ('Understand what parent and child is', 1);
-INSERT INTO topic (name, student_subject_id) VALUES ('Understand what parent and child is', 2);
+INSERT INTO topic (name, subject_name, student_subject_id) VALUES ('Understand what parent and child is','HTML_CSS', 1);
+INSERT INTO topic (name, subject_name , student_subject_id) VALUES ('Can create and link a stylesheet','HTML_CSS', 2);
+INSERT INTO topic (name, subject_name , student_subject_id) VALUES ('Understand what semantic tags are and how to use them','HTML_CSS', 2);
+INSERT INTO topic (name, subject_name , student_subject_id) VALUES ('Be able to include a form in a web page','HTML_CSS', 2);
+INSERT INTO topic (name, subject_name , student_subject_id) VALUES ('Be able to create a button','HTML_CSS', 2);
+INSERT INTO topic (name, subject_name , student_subject_id) VALUES ('Understand what a selector is in CSS','HTML_CSS', 2);
+INSERT INTO topic (name, subject_name , student_subject_id) VALUES ('Understand the difference between a tag, class and ID','HTML_CSS', 2);
+INSERT INTO topic (name, subject_name , student_subject_id) VALUES ('Understand what prefixes are','HTML_CSS', 2);
+INSERT INTO topic (name, subject_name , student_subject_id) VALUES ('Understand what pseudo classes are','HTML_CSS', 2);
+INSERT INTO topic (name, subject_name , student_subject_id) VALUES ('Understand the difference between padding and margin','HTML_CSS', 2);
+INSERT INTO topic (name, subject_name , student_subject_id) VALUES ('Be able to create a comment in HTML and CSS','HTML_CSS', 2);
+INSERT INTO topic (name, subject_name , student_subject_id) VALUES ('Can create a media query that triggers a change / changes on another device / screen size','HTML_CSS', 2);
+INSERT INTO topic (name, subject_name , student_subject_id) VALUES ('Understand how to implement flexbox and when to use it','HTML_CSS', 2);
+INSERT INTO topic (name, subject_name , student_subject_id) VALUES ('Be able to link a Javascript file in your project','Javascript', 2);
+INSERT INTO topic (name, subject_name , student_subject_id) VALUES ('Be able to do a console.log()','Javascript', 2);
+INSERT INTO topic (name, subject_name , student_subject_id) VALUES ('Understand what a console.log is used for','Javascript', 2);
+INSERT INTO topic (name, subject_name , student_subject_id) VALUES ('Be able to assign a variable with const and let','Javascript', 2);
+INSERT INTO topic (name, subject_name , student_subject_id) VALUES ('Understand the difference between const and let','Javascript', 2);
+INSERT INTO topic (name, subject_name , student_subject_id) VALUES ('Be able to write a function','Javascript', 2);
+INSERT INTO topic (name, subject_name , student_subject_id) VALUES ('Be able to use concatentation','Javascript', 2);
+INSERT INTO topic (name, subject_name , student_subject_id) VALUES ('Understand what a return statement does','Javascript', 2);
+INSERT INTO topic (name, subject_name , student_subject_id) VALUES ('Be able to use a callback function','Javascript', 2);
+INSERT INTO topic (name, subject_name , student_subject_id) VALUES ('Understand what a conditional is','Javascript', 2);
 
 INSERT INTO grade (vote, topic_id) VALUES (25, 1);
 INSERT INTO grade (vote, topic_id) VALUES (50, 2);
