@@ -1,36 +1,34 @@
-
-import React , {useState} from 'react';
-import useFetch from "../../../../Auth/useFetch";
-import Spinner from "../../../UI/Spinner";
-import {Table, Button, Tag} from 'antd'
+import React, {useState} from 'react';
+import "./React.scss";
+import {Button, Table, Tag} from 'antd';
 import 'antd/dist/antd.css'
-import "./HTML_CSS.scss";
-//import { ReactDOM } from 'react-dom';
-
-export default function HTML_CSS() {
-  let { status, data, error } = useFetch('http://localhost:3001/api/Modules/HTML_CSS/Topics');
-
-  if (status === 'error') {
-    return <div>Error: {error.message}</div>;
-  } else if (status === 'success') {
-    return <HtmlTopicList data={data} />;
-  } else {
-    return <Spinner />;
-  }
-
-}
-
-
-const HtmlTopicList = ({data})=> {
-  console.log('this the data', data);
-    const tableHeaders = ["0%-20%", "20%-40%", "40%-60%", "60%-80%", "80%-100%"]
-    
+export default function REACTJS() {
+    const tableHeaders = ["0%-20%", "20%-40%", "40%-60%", "60%-80%", "80%-100%"] 
+    const tableTopics = [
+        "Understand the difference between class and functional components",
+        "Be able to create a React application with create-react-app",
+        "Understand what JSX is and how it's different to HTML and Javascript",
+        "Be able to apply a class in JSX",
+        "Be able to pass props",
+        "Be able to handle events in React",
+        "Be able to use ternary operators in React",
+        "Be able to use conditional rendering",
+        "Understand what state is and how to use it",
+        "Be able to update state",
+        "Understand what hooks are",
+        "Be able to use the useState hook",
+        "Be able to use the useEffect hook",
+        "Understand what dependencies are in relation to useEffect and how this can effect the functionality of this hook",
+        "Be able to handle forms in React",
+        "Be able to use fetch in React"
+    ]
     const [state, setState] = useState({
         task: { options: tableHeaders,
-         extras: data},
+         extras: tableTopics},
         selected: {}
       }
       )
+      
       const onRadioChange = e => {
         let name = e.currentTarget.name;
         let value = e.currentTarget.value;
@@ -46,6 +44,7 @@ const HtmlTopicList = ({data})=> {
           selected: {}
         });
       };
+      
         let columns = [];
         columns.push({
           title: "Topics",
@@ -53,6 +52,7 @@ const HtmlTopicList = ({data})=> {
           key: "name",
           width: "45vw"
         });
+    
         state.task.options.forEach((option, i) => {
           columns.push({
             title: option,
@@ -70,12 +70,14 @@ const HtmlTopicList = ({data})=> {
             }
           });
         });
+    
         let rowHeaders = [];
         state.task.extras.forEach((extra, i) => {
-          rowHeaders.push({ name: `${i + 1}.${extra.name}` });
+          rowHeaders.push({ name: `${i + 1}.${extra}` });
         });
         return (
           <div>
+            
             <Table
               columns={columns}
               dataSource={rowHeaders}
@@ -83,36 +85,17 @@ const HtmlTopicList = ({data})=> {
               bordered
               pagination={false}
             />
+    
             <Tag color="red">Selected options</Tag>
             <br />
+    
             {JSON.stringify(state.selected)}
             <br />
             <Button onClick={onSubmit} type="primary">
               {" "}
               Submit
             </Button>
-          </div>
-        );
-}
-// const HtmlTopicList = ({ data }) => {
-//   const [topics, setTopics] = useState(data);
-//   console.log('this the data', data);
-//   return (
-//     <div>
-//       <div className="row">
-//           {topics.map(({ name }) => (
-           
-//               <div className="text-center" key={name}>
-               
-//                 <h2 className="">{name}</h2>
             
-//                 </div>
-//           ))
-//           }
-//       </div>
-     
-//     </div>
-//   )
-
-// }
-    
+          </div>
+        ); 
+}
