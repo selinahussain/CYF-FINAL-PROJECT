@@ -1,8 +1,15 @@
+<<<<<<< Updated upstream
 import React, {useState} from 'react';
+=======
+import React , {useState}from 'react';
+import useFetch from "../../../../Auth/useFetch";
+import Spinner from "../../../UI/Spinner";
+>>>>>>> Stashed changes
 import "./Git_GitHub.scss";
 import {Table, Button, Tag} from 'antd';
 import 'antd/dist/antd.css' 
 
+<<<<<<< Updated upstream
 export default function Git_Github() {
     const tableHeaders = ["0%-20%", "20%-40%", "40%-60%", "60%-80%", "80%-100%"] 
     const tableTopics = [
@@ -89,4 +96,38 @@ export default function Git_Github() {
             
           </div>
         ); 
+=======
+export default function Git_GitHub() {
+  let { status, data, error } = useFetch('http://localhost:3001/api/Modules/Git_GitHub/Topics');
+
+  if (status === 'error') {
+    return <div>Error: {error.message}</div>;
+  } else if (status === 'success') {
+    return <GitTopicList data={data} />;
+  } else {
+    return <Spinner />;
+  }
+
+}
+  
+const GitTopicList = ({ data }) => {
+  const [topics, setTopics] = useState(data);
+
+  return (
+    <div>
+      <div className="row">
+          {topics.map(({ name }) => (
+           
+              <div className="text-center" key={name}>
+               
+                <h2 className="">{name}</h2>
+            
+                </div>
+          ))
+          }
+      </div>
+     
+    </div>
+  )
+>>>>>>> Stashed changes
 }
