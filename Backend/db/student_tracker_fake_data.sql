@@ -95,10 +95,10 @@ INSERT INTO classOverview (start_date, end_date, average, cohort_id) VALUES ('03
 INSERT INTO student (name, email, github, linkedin, phone, cohort_id) VALUES ('Selina', 'selinahussain@live.com', 'selina@github', 'selinahu@linkedin', '01293847539', 1);
 INSERT INTO student (name, email, github, linkedin, phone, cohort_id) VALUES ('Mursel', 'mursel@email.com', 'mursel@github', 'mursel@linkedin', '01293847539', 1);
 
-INSERT INTO subject (name) VALUES ('HTML/CSS');
+INSERT INTO subject (name) VALUES ('HTML_CSS');
 INSERT INTO subject (name) VALUES ('Javascript');
-INSERT INTO subject (name) VALUES ('Git-GitHub');
-INSERT INTO subject (name) VALUES ('React');
+INSERT INTO subject (name) VALUES ('Git_GitHub');
+INSERT INTO subject (name) VALUES ('REACTJS');
 INSERT INTO subject (name) VALUES ('NodeJS');
 INSERT INTO subject (name) VALUES ('PostgreSQL');
 INSERT INTO subject (name) VALUES ('MongoDB');
