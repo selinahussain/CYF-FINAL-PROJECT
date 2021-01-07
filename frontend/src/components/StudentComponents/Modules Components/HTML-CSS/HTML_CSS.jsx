@@ -1,10 +1,17 @@
+<<<<<<< HEAD
 import React, {useState} from 'react';
 import {Table, Button, Tag} from 'antd'
 import 'antd/dist/antd.css'
+=======
+import React , {useState}from 'react';
+import useFetch from "../../../../Auth/useFetch";
+import Spinner from "../../../UI/Spinner";
+>>>>>>> 6a69453b1aaf23af49437378269ac99b24a0df1c
 import "./HTML_CSS.scss";
 //import { ReactDOM } from 'react-dom';
 
 export default function HTML_CSS() {
+<<<<<<< HEAD
     const tableHeaders = ["0%-20%", "20%-40%", "40%-60%", "60%-80%", "80%-100%"]
     const tableTopics = [ "Understand what 'parent' and 'child' is",
     "Can create and link a stylesheet",
@@ -99,4 +106,42 @@ export default function HTML_CSS() {
             
           </div>
         ); 
+=======
+  let { status, data, error } = useFetch('http://localhost:3001/api/Modules/HTML_CSS/Topics');
+
+  if (status === 'error') {
+    return <div>Error: {error.message}</div>;
+  } else if (status === 'success') {
+    return <HtmlTopicList data={data} />;
+  } else {
+    return <Spinner />;
+  }
+
 }
+  
+const HtmlTopicList = ({ data }) => {
+  const [topics, setTopics] = useState(data);
+
+  return (
+    <div>
+      <div className="row">
+          {topics.map(({ name }) => (
+           
+              <div className="text-center" key={name}>
+               
+                <h2 className="">{name}</h2>
+            
+                </div>
+          ))
+          }
+      </div>
+     
+    </div>
+  )
+>>>>>>> 6a69453b1aaf23af49437378269ac99b24a0df1c
+}
+
+
+
+
+    

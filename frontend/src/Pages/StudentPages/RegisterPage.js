@@ -8,7 +8,7 @@ const RegisterPage = () => {
   return (
     <Row>
       <Col md={{ span: 6, order: 'last' }} className="register-features mb-5">
-        <div>
+        <div className= "registerTitleDiv">
           <h1 className="app-title">Sign up</h1>
         </div>
         <RegisterForm />

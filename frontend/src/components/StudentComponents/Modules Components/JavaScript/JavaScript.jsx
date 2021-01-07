@@ -1,8 +1,15 @@
+<<<<<<< HEAD
 import React, {useState} from 'react';
+=======
+import React , {useState}from 'react';
+import useFetch from "../../../../Auth/useFetch";
+import Spinner from "../../../UI/Spinner"
+>>>>>>> 6a69453b1aaf23af49437378269ac99b24a0df1c
 import "./JavaScript.scss";
 import {Table, Button, Tag} from 'antd';
 import 'antd/dist/antd.css'
 export default function JavaScript() {
+<<<<<<< HEAD
     const tableHeaders = ["0%-20%", "20%-40%", "40%-60%", "60%-80%", "80%-100%"] 
     const tableTopics = [
         "Be able to link a Javascript file in your project",
@@ -140,4 +147,37 @@ export default function JavaScript() {
             
           </div>
         ); 
+=======
+    let { status, data, error } = useFetch('http://localhost:3001/api/Modules/JavaScript/Topics');
+
+  if (status === 'error') {
+    return <div>Error: {error.message}</div>;
+  } else if (status === 'success') {
+    return <JavaScriptTopicList data={data} />;
+  } else {
+    return <Spinner />;
+  }
+
+>>>>>>> 6a69453b1aaf23af49437378269ac99b24a0df1c
+}
+  
+const JavaScriptTopicList = ({ data }) => {
+  const [topics, setTopics] = useState(data);
+
+  return (
+    <div>
+      <div className="row">
+          {topics.map(({ name }) => (
+           
+              <div className="text-center" key={name}>
+               
+                <h2 className="">{name}</h2>
+            
+                </div>
+          ))
+          }
+      </div>
+     
+    </div>
+  )
 }
