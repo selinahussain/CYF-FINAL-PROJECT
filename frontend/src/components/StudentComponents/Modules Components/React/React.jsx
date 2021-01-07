@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import "./React.scss";
 import {Button, Table, Tag} from 'antd';
 import 'antd/dist/antd.css'
-export default function Reactjs() {
+export default function REACTJS() {
     const tableHeaders = ["0%-20%", "20%-40%", "40%-60%", "60%-80%", "80%-100%"] 
     const tableTopics = [
         "Understand the difference between class and functional components",
