@@ -3,7 +3,7 @@ import {Route,Link, Switch,Redirect,Router} from 'react-router-dom';
 import useFetch from '../../Auth/useFetch';
 import Spinner from '../UI/Spinner';
 import "./StudentModulesBody.scss";
-import JavaScript from "../../components/StudentComponents/Modules Components/JavaScript/JavaScript";
+//import JavaScript from "../../components/StudentComponents/Modules Components/JavaScript/JavaScript";
 
 
 
@@ -33,22 +33,19 @@ const SubjectList = ({ data }) => {
 
       <div className="row">
           {subjects.map(({ name }) => (
+            <div>
               <div className="text-center modules" key={name}>
                 <Link to={`/modules/${name}`}>
                 <h2 className="">{name}</h2>
                 </Link>
                 
             </div>
+             <Route path={`/modules/${name}`} component={name} />
+             </div>
           ))
           }
       </div>
-      <div>
-       <Switch>
-            
-            <Route path="/modules/JavaScript" component={JavaScript} />
-            
-                </Switch> 
-      </div>
+     
     </div>
   );
 };
