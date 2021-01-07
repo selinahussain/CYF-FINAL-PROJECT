@@ -54,5 +54,56 @@ router.get('/classes', function (req, res) {
   });
 });
 
+router.get('/Modules/HTML_CSS/Topics', function (req, res) {
+  let selectHTMLTopics = `SELECT name FROM topic WHERE subject_name = 'HTML_CSS'; `;
+  pool.query(selectHTMLTopics, (err, results) => {
+    if (err) {
+      throw err;
+    }
+
+    if (results.rows.length > 0) {
+      res.json(results.rows);
+    }
+  });
+});
+router.get('/Modules/JavaScript/Topics', function (req, res) {
+  let selectJavaScriptTopics = `SELECT name FROM topic WHERE subject_name = 'Javascript'; `;
+  pool.query(selectJavaScriptTopics, (err, results) => {
+    if (err) {
+      throw err;
+    }
+
+    if (results.rows.length > 0) {
+      res.json(results.rows);
+    }
+  });
+});
+
+
+router.get('/Modules/Git-GitHub/Topics', function (req, res) {
+  let selectGitGitHubTopics = `SELECT name FROM topic WHERE subject_name = 'Git_GitHub'; `;
+  pool.query(selectGitGitHubTopics, (err, results) => {
+    if (err) {
+      throw err;
+    }
+
+    if (results.rows.length > 0) {
+      res.json(results.rows);
+    }
+  });
+});
+
+router.get('/Modules/React/Topics', function (req, res) {
+  let selectReactTopics = `SELECT name FROM topic WHERE subject_name = 'REACTJS'; `;
+  pool.query(selectReactTopics, (err, results) => {
+    if (err) {
+      throw err;
+    }
+
+    if (results.rows.length > 0) {
+      res.json(results.rows);
+    }
+  });
+});
 
 module.exports = router;
