@@ -1,22 +1,25 @@
-import React , {useState}from 'react';
-import useFetch from "../../../../Auth/useFetch";
-import Spinner from "../../../UI/Spinner"
-import "./JavaScript.scss";
 
-export default function JavaScript() {
-    let { status, data, error } = useFetch('http://localhost:3001/api/Modules/JavaScript/Topics');
+import React , {useState} from 'react';
+import useFetch from "../../../../Auth/useFetch";
+import Spinner from "../../../UI/Spinner";
+
+
+//import { ReactDOM } from 'react-dom';
+
+export default function Javascript() {
+  let { status, data, error } = useFetch('http://localhost:3001/api/Modules/Javascript/Topics');
 
   if (status === 'error') {
     return <div>Error: {error.message}</div>;
   } else if (status === 'success') {
-    return <JavaScriptTopicList data={data} />;
+    return <HtmlTopicList data={data} />;
   } else {
     return <Spinner />;
   }
 
 }
   
-const JavaScriptTopicList = ({ data }) => {
+const HtmlTopicList = ({ data }) => {
   const [topics, setTopics] = useState(data);
 
   return (
@@ -35,4 +38,10 @@ const JavaScriptTopicList = ({ data }) => {
      
     </div>
   )
+
 }
+
+
+
+
+    

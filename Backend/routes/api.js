@@ -106,4 +106,30 @@ router.get('/Modules/React/Topics', function (req, res) {
   });
 });
 
+router.get('/Modules/NodeJS/Topics', function (req, res) {
+  let selectNodeJsTopics = `SELECT name FROM topic WHERE subject_name = 'NodeJS'; `;
+  pool.query(selectNodeJsTopics, (err, results) => {
+    if (err) {
+      throw err;
+    }
+
+    if (results.rows.length > 0) {
+      res.json(results.rows);
+    }
+  });
+});
+
+router.get('/Modules/PostgreSQL/Topics', function (req, res) {
+  let selectPostgreSQLTopics = `SELECT name FROM topic WHERE subject_name = 'PostgreSQL'; `;
+  pool.query(selectPostgreSQLTopics, (err, results) => {
+    if (err) {
+      throw err;
+    }
+
+    if (results.rows.length > 0) {
+      res.json(results.rows);
+    }
+  });
+});
+
 module.exports = router;

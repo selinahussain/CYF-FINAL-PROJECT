@@ -103,7 +103,7 @@ INSERT INTO subject (name) VALUES ('Git_GitHub');
 INSERT INTO subject (name) VALUES ('REACTJS');
 INSERT INTO subject (name) VALUES ('NodeJS');
 INSERT INTO subject (name) VALUES ('PostgreSQL');
-INSERT INTO subject (name) VALUES ('MongoDB');
+
 
 INSERT INTO student_subject (student_id, subject_name) VALUES (1, 'HTML_CSS');
 INSERT INTO student_subject (student_id, subject_name) VALUES (2, 'REACTJS');
@@ -131,6 +131,16 @@ INSERT INTO topic (name, subject_name , student_subject_id) VALUES ('Be able to 
 INSERT INTO topic (name, subject_name , student_subject_id) VALUES ('Understand what a return statement does','Javascript', 2);
 INSERT INTO topic (name, subject_name , student_subject_id) VALUES ('Be able to use a callback function','Javascript', 2);
 INSERT INTO topic (name, subject_name , student_subject_id) VALUES ('Understand what a conditional is','Javascript', 2);
+INSERT INTO topic (name, subject_name , student_subject_id) VALUES ('Can initialize a repo for a new project','Git_GitHub', 2);
+INSERT INTO topic (name, subject_name , student_subject_id) VALUES ('Can use a .gitignore file','Git_GitHub', 2);
+INSERT INTO topic (name, subject_name , student_subject_id) VALUES ('Understand what a conditional is','Git_GitHub', 2);
+INSERT INTO topic (name, subject_name , student_subject_id) VALUES ('Understand what a conditional is','Git_GitHub', 2);
+INSERT INTO topic (name, subject_name , student_subject_id) VALUES ('Understand what a conditional is','Git_GitHub', 2);
+INSERT INTO topic (name, subject_name , student_subject_id) VALUES ('Understand what a conditional is','Git_GitHub', 2);
+INSERT INTO topic (name, subject_name , student_subject_id) VALUES ('Understand what a conditional is','Git_GitHub', 2);
+INSERT INTO topic (name, subject_name , student_subject_id) VALUES ('Understand what a conditional is','Git_GitHub', 2);
+INSERT INTO topic (name, subject_name , student_subject_id) VALUES ('Understand what a conditional is','Git_GitHub', 2);
+INSERT INTO topic (name, subject_name , student_subject_id) VALUES ('Understand what a conditional is','Git_GitHub', 2);
 
 INSERT INTO grade (vote, topic_id) VALUES (25, 1);
 INSERT INTO grade (vote, topic_id) VALUES (50, 2);
