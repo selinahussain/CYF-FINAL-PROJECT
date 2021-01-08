@@ -49,15 +49,3 @@ const SubjectList = ({ data }) => {
     </div>
   );
 };
-
-
-
-//     return (
-//         <div className = "modules">
-//             <Link to= {`/modules/moduleName`}>
-//             <button>go to detail</button>
-//             </Link>
-//         </div>
-//     )
-// }
-// }

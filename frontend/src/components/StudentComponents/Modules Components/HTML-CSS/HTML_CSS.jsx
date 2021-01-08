@@ -9,6 +9,7 @@ import "./HTML_CSS.scss";
 
 export default function HTML_CSS() {
   let { status, data, error } = useFetch('http://localhost:3001/api/Modules/HTML_CSS/Topics');
+  console.log(data);
 
   if (status === 'error') {
     return <div>Error: {error.message}</div>;
@@ -21,9 +22,14 @@ export default function HTML_CSS() {
 }
 
 
+ 
+
+
+
+
 const HtmlTopicList = ({data})=> {
   console.log('this the data', data);
-    const tableHeaders = ["0%-20%", "20%-40%", "40%-60%", "60%-80%", "80%-100%"]
+    const tableHeaders = [20,40,60,80,100]
     
     const [state, setState] = useState({
         task: { options: tableHeaders,
@@ -31,15 +37,24 @@ const HtmlTopicList = ({data})=> {
         selected: {}
       }
       )
-      const onRadioChange = e => {
+      const onRadioChange =  e => {
         let name = e.currentTarget.name;
         let value = e.currentTarget.value;
         setState({
           ...state,
-          selected: { ...state.selected, [name]: value }
+           selected: { ...state.selected, [name]: value }
         });
       };
-      const onSubmit = () => {
+      const onSubmit =  () => {
+      //   let name = e.currentTarget.name;
+      //   let value = e.currentTarget.value;
+
+      //   const body = setState(state.value);
+      //   const response =  fetch("http://localhost:3001/api/add-grade", {
+      //     method : "POST",
+      //     headers : {"Content-Type" : "application/json"},
+      //     body: JSON.stringify(body)
+      // });
         console.log(state.selected);
         setState({
           ...state,
@@ -83,9 +98,9 @@ const HtmlTopicList = ({data})=> {
               bordered
               pagination={false}
             />
-            <Tag color="red">Selected options</Tag>
+            {/* <Tag color="red">Selected options</Tag> */}
             <br />
-            {JSON.stringify(state.selected)}
+           {JSON.stringify(state.selected)}
             <br />
             <Button onClick={onSubmit} type="primary">
               {" "}
@@ -94,25 +109,5 @@ const HtmlTopicList = ({data})=> {
           </div>
         );
 }
-// const HtmlTopicList = ({ data }) => {
-//   const [topics, setTopics] = useState(data);
-//   console.log('this the data', data);
-//   return (
-//     <div>
-//       <div className="row">
-//           {topics.map(({ name }) => (
-           
-//               <div className="text-center" key={name}>
-               
-//                 <h2 className="">{name}</h2>
-            
-//                 </div>
-//           ))
-//           }
-//       </div>
-     
-//     </div>
-//   )
 
-// }
     

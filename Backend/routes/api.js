@@ -93,7 +93,7 @@ router.get('/Modules/Git-GitHub/Topics', function (req, res) {
   });
 });
 
-router.get('/Modules/React/Topics', function (req, res) {
+router.get('/Modules/ReactJs/Topics', function (req, res) {
   let selectReactTopics = `SELECT name FROM topic WHERE subject_name = 'REACTJS'; `;
   pool.query(selectReactTopics, (err, results) => {
     if (err) {
@@ -131,5 +131,27 @@ router.get('/Modules/PostgreSQL/Topics', function (req, res) {
     }
   });
 });
+
+
+router.post('/add-grade', (req, res) => {
+  let data = [req.body];
+  data.forEach((obj) => {
+    pool.query(
+      `insert into grade (vote,topic_id)
+            values($1,$2)`,
+      [
+        obj.vote,
+        obj.topic_id 
+      ],
+      (err, results) => {
+        if (err) {
+          throw err;
+        }
+        res.send('successful');
+      }
+    );
+  });
+});
+
 
 module.exports = router;
