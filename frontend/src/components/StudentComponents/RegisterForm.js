@@ -19,7 +19,7 @@ const RegisterPage = () => {
       data.password,
       data.confirmPassword,
       () => {
-        history.replace({ pathname: "/classes" });
+        history.replace({ pathname: "/student_main" });
       }
     );
     console.log(data);
