@@ -67,8 +67,9 @@ router.get('/Modules/HTML_CSS/Topics', function (req, res) {
     }
   });
 });
+
 router.get('/Modules/JavaScript/Topics', function (req, res) {
-  let selectJavaScriptTopics = `SELECT name FROM topic WHERE subject_name = 'Javascript'; `;
+  let selectJavaScriptTopics = `SELECT topic_id,name FROM topic WHERE subject_name = 'Javascript'; `;
   pool.query(selectJavaScriptTopics, (err, results) => {
     if (err) {
       throw err;
@@ -80,9 +81,8 @@ router.get('/Modules/JavaScript/Topics', function (req, res) {
   });
 });
 
-
 router.get('/Modules/Git-GitHub/Topics', function (req, res) {
-  let selectGitGitHubTopics = `SELECT name FROM topic WHERE subject_name = 'Git_GitHub'; `;
+  let selectGitGitHubTopics = `SELECT topic_id,name FROM topic WHERE subject_name = 'Git_GitHub'; `;
   pool.query(selectGitGitHubTopics, (err, results) => {
     if (err) {
       throw err;
@@ -95,7 +95,7 @@ router.get('/Modules/Git-GitHub/Topics', function (req, res) {
 });
 
 router.get('/Modules/ReactJs/Topics', function (req, res) {
-  let selectReactTopics = `SELECT name FROM topic WHERE subject_name = 'REACTJS'; `;
+  let selectReactTopics = `SELECT topic_id,name FROM topic WHERE subject_name = 'REACTJS'; `;
   pool.query(selectReactTopics, (err, results) => {
     if (err) {
       throw err;
@@ -108,7 +108,7 @@ router.get('/Modules/ReactJs/Topics', function (req, res) {
 });
 
 router.get('/Modules/NodeJS/Topics', function (req, res) {
-  let selectNodeJsTopics = `SELECT name FROM topic WHERE subject_name = 'NodeJS'; `;
+  let selectNodeJsTopics = `SELECT topic_id,name FROM topic WHERE subject_name = 'NodeJS'; `;
   pool.query(selectNodeJsTopics, (err, results) => {
     if (err) {
       throw err;
@@ -121,7 +121,7 @@ router.get('/Modules/NodeJS/Topics', function (req, res) {
 });
 
 router.get('/Modules/PostgreSQL/Topics', function (req, res) {
-  let selectPostgreSQLTopics = `SELECT name FROM topic WHERE subject_name = 'PostgreSQL'; `;
+  let selectPostgreSQLTopics = `SELECT topic_id,name FROM topic WHERE subject_name = 'PostgreSQL'; `;
   pool.query(selectPostgreSQLTopics, (err, results) => {
     if (err) {
       throw err;
@@ -156,28 +156,7 @@ console.log(query);
   );
 });
 
-// router.post('/add-grade', (req, res) => {
-//   let data = req.body;
-//   // console.log(data)
-//   const arr = Object.keys(data);
-//   arr.forEach((obj) => {
-//     pool.query(
-//       `insert into grade (vote,topic_id)
-//             values($1,$2)`,
-//       [
-//         Number(data[obj]),
-//         obj
-//       ],
-//       // (err, results) => {
-//       //   if (err) {
-//       //     throw err;
-//       //   }
-//       //   res.send('successful');
-//       // }
-//     );
-//   });
-//   res.send('successful');
-// });
+
 
 
 module.exports = router;
