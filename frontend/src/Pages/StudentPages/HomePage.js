@@ -15,7 +15,7 @@ const HomePage = () => {
         <div className="introDiv">
           <div>
             <p>
-              Welcome to the CodeYourFuture Student Tracker. Please enter your log in information
+              Welcome to the CodeYourFuture Student Confident Tracker. Please enter your log in information
               below.
             </p>
           </div>

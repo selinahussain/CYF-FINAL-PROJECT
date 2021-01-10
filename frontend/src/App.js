@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Container from "react-bootstrap/Container";
-import {Class, Header, PrivateRoute, Home, RegisterPage } from "./components";
+import {Header, PrivateRoute, Home, RegisterPage } from "./components";
 import StudentMainPage from './Pages/StudentPages/StudentMainPage'
 import { ProvideAuth } from "../src/Auth/use-auth";
 import Footer from "./components/FooterComponent/Footer";
@@ -25,24 +25,22 @@ function App({match}) {
 				<Container>
 					<Switch>
 						<Route exact path="/">
-              <Home />
-              
+                        <Home />
 						</Route>
-            <Route exact path="/register">
-              <RegisterPage />
-              
+                        <Route exact path="/register">
+                            <RegisterPage />
 						</Route>
 						<PrivateRoute path="/student_main">
 							<StudentMainPage />
 						</PrivateRoute>
 						<PrivateRoute path="/modules/JavaScript">
-						<JavaScript />
+						    <JavaScript />
 						</PrivateRoute>
 						<PrivateRoute path="/modules/HTML_CSS">
-						<HTML_CSS />
+						    <HTML_CSS />
 						</PrivateRoute>
 						<PrivateRoute path="/modules/Git_GitHub">
-						<Git_GitHub/>
+						    <Git_GitHub/>
 						</PrivateRoute>
 						<PrivateRoute path="/modules/NodeJS">
 						<NodeJS />
