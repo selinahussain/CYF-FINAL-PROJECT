@@ -4,7 +4,7 @@ import Spinner from "../../../UI/Spinner";
 import {Table, Button, Tag} from 'antd'
 import 'antd/dist/antd.css'
 import "./NodeJS.scss";
-//import { ReactDOM } from 'react-dom';
+import {Demo, getAverage} from "../JavaScript/JavaScript"
 
 export default function NodeJS() {
   let { status, data, error } = useFetch('http://localhost:3001/api/Modules/NodeJS/Topics');
@@ -103,6 +103,7 @@ const NodeJsTopicList = ({ data }) => {
         {" "}
         Submit
       </Button>
+      <Demo newAddingValue={getAverage(state.selected)}/>
     </div>
   );
 };

@@ -1,9 +1,10 @@
 import React , {useState} from 'react';
 import useFetch from "../../../../Auth/useFetch";
 import Spinner from "../../../UI/Spinner";
-import {Table, Button, Tag} from 'antd'
+import {Table, Button} from 'antd'
 import 'antd/dist/antd.css'
 import "./REACTJS.scss";
+import {Demo, getAverage} from "../JavaScript/JavaScript"
 
 
 export default function ReactJs() {
@@ -96,7 +97,7 @@ const ReactJsTopicList = ({ data }) => {
         bordered
         pagination={false}
       />
-      {/* <Tag color="red">Selected options</Tag> */}
+     
       <br />
       {JSON.stringify(state.selected)}
       <br />
@@ -104,6 +105,7 @@ const ReactJsTopicList = ({ data }) => {
         {" "}
         Submit
       </Button>
+      <Demo newAddingValue={getAverage(state.selected)}/>
     </div>
   );
 };

@@ -1,19 +1,18 @@
 import React, { useState } from "react";
 import useFetch from "../../../../Auth/useFetch";
 import Spinner from "../../../UI/Spinner";
-import { Table, Button, Tag } from "antd";
-import { Progress } from 'antd';
-//import "antd/dist/antd.css";
+import { Table, Button } from "antd";
+import { Progress } from "antd";
+import "antd/dist/antd.css";
 import "./JavaScript.scss";
 //import { Fragment } from "react";
 //import Demo from "./PrsgsBarJs";
-
 
 export default function JavaScript() {
   let { status, data, error } = useFetch(
     "http://localhost:3001/api/Modules/JavaScript/Topics"
   );
- /// console.log(data);
+  /// console.log(data);
 
   if (status === "error") {
     return <div>Error: {error.message}</div>;
@@ -24,9 +23,30 @@ export default function JavaScript() {
   }
 }
 
+export const getAverage = (valuesObject) =>{
+  return parseInt(Object.values(valuesObject).reduce((accumulator,currentValue)=>accumulator+parseInt(currentValue),0)/Object.values(valuesObject).length)
+}
+
+
+export const Demo =({newAddingValue}) =>{
+
+  return (
+    <div>
+       <Progress
+      strokeColor={{
+        from: '#d12f2f',
+        to: '#87d068',
+      }}
+      percent={newAddingValue}
+      status="active"
+
+    />
+    </div>
+  )
+}
+
+
 const JavaScriptTopicList = ({ data }) => {
-  
- // console.log("this the data", data);
   const tableHeaders = [20, 40, 60, 80, 100];
 
   const [state, setState] = useState({
@@ -34,62 +54,14 @@ const JavaScriptTopicList = ({ data }) => {
     selected: {},
   });
   const onRadioChange = (e) => {
-    //console.log(e.currentTarget);
     let name = e.currentTarget.id;
     let value = e.currentTarget.value;
     setState({
       ...state,
       selected: { ...state.selected, [name]: value },
     });
-   // console.log(value)
   };
 
-  const addValue = (e) => {
-    //console.log(e.currentTarget);
-    let name = e.currentTarget.id;
-    let value = e.currentTarget.value;
-    setState({
-      ...state,
-      selected: { ...state.selected, [name]: value },
-    });
-  
-  }
-  ////////////////////////////////////////////////
-
-  
-  // const Demo =(e) => {
-  //   // let name = e.currentTarget.id;
-  //   // let value = e.currentTarget.value;
-  //   // setState({
-  //   //   ...state,
-  //   //   selected: { ...state.selected, [name]: value },
-  //   // })
-  //   return (
-  //     <div>
-  //        <Progress
-  //       strokeColor={{
-  //         from: '#108ee9',
-  //         to: '#87d068',
-  //       }}
-  //       percent={50}
-  //       status="active"
-
-  //     />
-  //     </div>
-  //   )
-  // }
-  
-
-
-
-
-
-
-
-
-
-
-////////////////////////////////////////////////////////////////
 
   const onSubmit = () => {
     // convert TO array
@@ -150,23 +122,14 @@ const JavaScriptTopicList = ({ data }) => {
         bordered
         pagination={false}
       />
-      {/* <Tag color="red">Selected options</Tag> */}
-      <br />
+      {/* <br />
       {JSON.stringify(state.selected)}
-      <br />
-      <Button onClick={onSubmit} type="primary" id= "submitBtn">
+      <br /> */}
+      <Button onClick={onSubmit} type="primary" id="submitBtn">
         {" "}
         Submit
       </Button>
-      <Progress
-        strokeColor={{
-          from: '#108ee9',
-          to: '#87d068',
-        }}
-        percent={50}
-        status="active"
-
-      />
+     <Demo  newAddingValue = {getAverage(state.selected)}/>
     </div>
   );
 };

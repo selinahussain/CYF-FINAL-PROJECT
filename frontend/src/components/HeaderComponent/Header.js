@@ -17,7 +17,7 @@ const Header = () => {
         <button className="registerBtn btn-dark">Login</button>
       </Link>
     );
-
+  console.log(auth.user);
   return (
     <header className="header">
       <div>
