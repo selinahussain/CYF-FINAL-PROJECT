@@ -2,6 +2,7 @@ const passport = require('passport');
 const express = require('express');
 
 const { pool } = require('../db/dbConfig');
+const { query } = require('express');
 const router = express.Router();
 
 // check authentication for all routes below
@@ -55,7 +56,7 @@ router.get('/classes', function (req, res) {
 });
 
 router.get('/Modules/HTML_CSS/Topics', function (req, res) {
-  let selectHTMLTopics = `SELECT name FROM topic WHERE subject_name = 'HTML_CSS'; `;
+  let selectHTMLTopics = `SELECT topic_id, name FROM topic WHERE subject_name = 'HTML_CSS'; `;
   pool.query(selectHTMLTopics, (err, results) => {
     if (err) {
       throw err;
@@ -133,25 +134,50 @@ router.get('/Modules/PostgreSQL/Topics', function (req, res) {
 });
 
 
+
 router.post('/add-grade', (req, res) => {
-  let data = [req.body];
-  data.forEach((obj) => {
-    pool.query(
-      `insert into grade (vote,topic_id)
-            values($1,$2)`,
-      [
-        obj.vote,
-        obj.topic_id 
-      ],
-      (err, results) => {
-        if (err) {
-          throw err;
-        }
-        res.send('successful');
+  let data = req.body;
+  console.log(data);
+  let query = 'insert into grade (vote,topic_id) VALUES' 
+    let values = data.map(x => {
+      return `(${x.vote}, ${x.topic_id})`
+  }).join(',');
+   query += values;
+  
+console.log(query);
+  pool.query(
+    query,
+    (err, results) => {
+      if (err) {
+        throw err;
       }
-    );
-  });
+      res.send('successful');
+    }
+  );
 });
+
+// router.post('/add-grade', (req, res) => {
+//   let data = req.body;
+//   // console.log(data)
+//   const arr = Object.keys(data);
+//   arr.forEach((obj) => {
+//     pool.query(
+//       `insert into grade (vote,topic_id)
+//             values($1,$2)`,
+//       [
+//         Number(data[obj]),
+//         obj
+//       ],
+//       // (err, results) => {
+//       //   if (err) {
+//       //     throw err;
+//       //   }
+//       //   res.send('successful');
+//       // }
+//     );
+//   });
+//   res.send('successful');
+// });
 
 
 module.exports = router;

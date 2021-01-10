@@ -1,10 +1,11 @@
-
+//import { useHistory } from "react-router-dom";
 import React , {useState} from 'react';
 import useFetch from "../../../../Auth/useFetch";
 import Spinner from "../../../UI/Spinner";
 import {Table, Button, Tag} from 'antd'
 import 'antd/dist/antd.css'
 import "./HTML_CSS.scss";
+//import { useAuth } from "../../../../Auth/use-auth";
 //import { ReactDOM } from 'react-dom';
 
 export default function HTML_CSS() {
@@ -28,6 +29,9 @@ export default function HTML_CSS() {
 
 
 const HtmlTopicList = ({data})=> {
+ // let history = useHistory();
+  //let auth = useAuth();
+  
   console.log('this the data', data);
     const tableHeaders = [20,40,60,80,100]
     
@@ -38,32 +42,41 @@ const HtmlTopicList = ({data})=> {
       }
       )
       const onRadioChange =  e => {
-        let name = e.currentTarget.name;
+        console.log(e.currentTarget)
+        let name = e.currentTarget.id;
         let value = e.currentTarget.value;
         setState({
           ...state,
-           selected: { ...state.selected, [name]: value }
+           selected: {...state.selected, [name]: value }
         });
       };
       const onSubmit =  () => {
-      //   let name = e.currentTarget.name;
-      //   let value = e.currentTarget.value;
-
-      //   const body = setState(state.value);
-      //   const response =  fetch("http://localhost:3001/api/add-grade", {
-      //     method : "POST",
-      //     headers : {"Content-Type" : "application/json"},
-      //     body: JSON.stringify(body)
-      // });
-        console.log(state.selected);
-        setState({
-          ...state,
-          selected: {}
-        });
+         // convert TO array
+const results = [];
+for (const [key, value] of Object.entries(state.selected )) {
+    results.push({
+        "topic_id": key,
+        "vote": value
+    });
+}      
+         console.log(state.selected);
+        // console.log(Object.keys(state.selected))
+         //console.log(Object.values(state.selected))
+        // console.log(Number(Object.keys(state.selected)))
+          fetch("http://localhost:3001/api/add-grade", {
+          method : "POST",
+          headers : {"Content-Type" : "application/json","Authorization":`Bearer ${JSON.parse(window.localStorage.getItem("token"))}`},
+          body: JSON.stringify(results)
+      });
+        
+        // setState({
+        //   ...state,
+        //   selected: {}
+        // });
       };
         let columns = [];
         columns.push({
-          title: "Topics",
+          title: "HTML-CSS Topics",
           dataIndex: "name",
           key: "name",
           width: "45vw"
@@ -76,9 +89,10 @@ const HtmlTopicList = ({data})=> {
               return (
                 <input
                   type="radio"
-                  checked={state.selected[row.name] == option}
+                  checked={state.selected[row.id] == option}
                   onChange={onRadioChange}
                   name={row.name}
+                  id={row.id}
                   value={option}
                 />
               );
@@ -87,7 +101,7 @@ const HtmlTopicList = ({data})=> {
         });
         let rowHeaders = [];
         state.task.extras.forEach((extra, i) => {
-          rowHeaders.push({ name: `${i + 1}.${extra.name}` });
+          rowHeaders.push({id: extra.topic_id, name: `${i + 1}.${extra.name}` });
         });
         return (
           <div>
