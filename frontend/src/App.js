@@ -6,7 +6,7 @@ import { ProvideAuth } from "../src/Auth/use-auth";
 import Footer from "./components/FooterComponent/Footer";
 import JavaScript from "./components/StudentComponents/Modules Components/JavaScript/JavaScript";
 import HTML_CSS from "./components/StudentComponents/Modules Components/HTML-CSS/HTML_CSS";
-import Git_GitHub from "./components/StudentComponents/Modules Components/Git-GitHub/Git_Github";
+import Git_GitHub from "./components/StudentComponents/Modules Components/Git-GitHub/Git_GitHub";
 
 import NodeJS from "./components/StudentComponents/Modules Components/NodeJS/NodeJS";
 import PostgreSQL from "./components/StudentComponents/Modules Components/PostgreSQL/PostgreSQL";
