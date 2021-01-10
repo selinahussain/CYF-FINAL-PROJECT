@@ -1,30 +1,36 @@
-import React, {useState} from 'react';
-import "./PostgreSQL.scss";
-import {Button, Table, Tag} from 'antd'
+
+import React , {useState} from 'react';
+import useFetch from "../../../../Auth/useFetch";
+import Spinner from "../../../UI/Spinner";
+import {Table, Button, Tag} from 'antd'
 import 'antd/dist/antd.css'
+
+//import { ReactDOM } from 'react-dom';
+
 export default function PostgreSQL() {
-    const tableHeaders = ["0%-20%", "20%-40%", "40%-60%", "60%-80%", "80%-100%"] 
-    const tableTopics = [
-        "Understand what SQL is and what it is used for",
-        "Understand what table, rows and columns refer to",
-        "Be able to create a database",
-        "Be able to create a table",
-        "Be able to insert data into a table",
-        "Be able to retrieve data from a table",
-        "Understand the different types of data",
-        "Be able to use conditionals in SQL statements",
-        "Be able to drop/delete tables",
-        "Be able to update data in a table",
-        "Be able to delete rows",
-        "Be able to join tables"
-    ]
+  let { status, data, error } = useFetch('http://localhost:3001/api/Modules/PostgreSQL/Topics');
+
+  if (status === 'error') {
+    return <div>Error: {error.message}</div>;
+  } else if (status === 'success') {
+    return <PostgresTopicList data={data} />;
+  } else {
+    return <Spinner />;
+  }
+
+}
+
+
+const PostgresTopicList = ({data})=> {
+  console.log('this the data', data);
+    const tableHeaders = ["0%-20%", "20%-40%", "40%-60%", "60%-80%", "80%-100%"]
+    
     const [state, setState] = useState({
         task: { options: tableHeaders,
-         extras: tableTopics},
+         extras: data},
         selected: {}
       }
       )
-      
       const onRadioChange = e => {
         let name = e.currentTarget.name;
         let value = e.currentTarget.value;
@@ -40,7 +46,6 @@ export default function PostgreSQL() {
           selected: {}
         });
       };
-      
         let columns = [];
         columns.push({
           title: "Topics",
@@ -48,7 +53,6 @@ export default function PostgreSQL() {
           key: "name",
           width: "45vw"
         });
-    
         state.task.options.forEach((option, i) => {
           columns.push({
             title: option,
@@ -66,14 +70,15 @@ export default function PostgreSQL() {
             }
           });
         });
-    
         let rowHeaders = [];
         state.task.extras.forEach((extra, i) => {
-          rowHeaders.push({ name: `${i + 1}.${extra}` });
+          rowHeaders.push({ name: `${i + 1}.${extra.name}` });
         });
         return (
           <div>
-            
+            <div>
+                <h1>Database</h1>
+            </div>  
             <Table
               columns={columns}
               dataSource={rowHeaders}
@@ -81,17 +86,36 @@ export default function PostgreSQL() {
               bordered
               pagination={false}
             />
-    
             <Tag color="red">Selected options</Tag>
             <br />
-    
             {JSON.stringify(state.selected)}
             <br />
             <Button onClick={onSubmit} type="primary">
               {" "}
               Submit
             </Button>
-            
           </div>
-        ); 
+        );
 }
+// const HtmlTopicList = ({ data }) => {
+//   const [topics, setTopics] = useState(data);
+//   console.log('this the data', data);
+//   return (
+//     <div>
+//       <div className="row">
+//           {topics.map(({ name }) => (
+           
+//               <div className="text-center" key={name}>
+               
+//                 <h2 className="">{name}</h2>
+            
+//                 </div>
+//           ))
+//           }
+//       </div>
+     
+//     </div>
+//   )
+
+// }
+    

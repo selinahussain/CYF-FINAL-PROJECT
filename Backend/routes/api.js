@@ -80,8 +80,8 @@ router.get('/Modules/JavaScript/Topics', function (req, res) {
 });
 
 
-router.get('/Modules/Git-GitHub/Topics', function (req, res) {
-  let selectGitGitHubTopics = `SELECT name FROM topic WHERE subject_name = 'Git_GitHub'; `;
+router.get('/Modules/Git_GitHub/Topics', function (req, res) {
+  let selectGitGitHubTopics = `SELECT name FROM topic WHERE subject_name = 'Git_GitHub' `;
   pool.query(selectGitGitHubTopics, (err, results) => {
     if (err) {
       throw err;
@@ -94,7 +94,7 @@ router.get('/Modules/Git-GitHub/Topics', function (req, res) {
 });
 
 router.get('/Modules/React/Topics', function (req, res) {
-  let selectReactTopics = `SELECT name FROM topic WHERE subject_name = 'REACTJS'; `;
+  let selectReactTopics = `SELECT name FROM topic WHERE subject_name = 'REACTJS'`;
   pool.query(selectReactTopics, (err, results) => {
     if (err) {
       throw err;
@@ -132,4 +132,23 @@ router.get('/Modules/PostgreSQL/Topics', function (req, res) {
   });
 });
 
+router.post('/add-grade', (req, res) => {
+  let data = [req.body];
+  data.forEach((obj) => {
+    pool.query(
+      `insert into grade (vote,topic_id)
+            values($1,$2)`,
+      [
+        obj.vote,
+        obj.topic_id 
+      ],
+      (err, results) => {
+        if (err) {
+          throw err;
+        }
+        res.send('successful');
+      }
+    );
+  });
+});
 module.exports = router;

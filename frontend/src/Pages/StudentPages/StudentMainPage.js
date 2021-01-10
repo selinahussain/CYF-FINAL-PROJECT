@@ -7,12 +7,13 @@ import StudentModulesBody from '../../components/StudentComponents/StudentModule
 
 const StudentMainPage = () => {
   return (
-    <div>
-      
-     <h1>Hi I am Student main page</h1>
-     <StudentModulesBody />
-     <StudentSideBar />
-     
+    <div className="main-contents">
+      <div className="sideBar">
+        <StudentSideBar />
+      </div>
+      <div className="rightSide">
+        <StudentModulesBody />
+      </div>
     </div>
   );
 };

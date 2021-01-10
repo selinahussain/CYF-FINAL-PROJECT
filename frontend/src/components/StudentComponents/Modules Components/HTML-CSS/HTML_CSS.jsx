@@ -22,8 +22,8 @@ export default function HTML_CSS() {
 
 
 const HtmlTopicList = ({data})=> {
-  console.log('this the data', data);
-    const tableHeaders = ["0%-20%", "20%-40%", "40%-60%", "60%-80%", "80%-100%"]
+  
+    const tableHeaders = ["Very Unconfident", "Unconfident", "Somewhat Confident", "Confident", "Very Confident"]
     
     const [state, setState] = useState({
         task: { options: tableHeaders,
@@ -31,6 +31,9 @@ const HtmlTopicList = ({data})=> {
         selected: {}
       }
       )
+      const handleSubmit = (e) => {
+        e.preventDefault()
+      }
       const onRadioChange = e => {
         let name = e.currentTarget.name;
         let value = e.currentTarget.value;
@@ -40,7 +43,7 @@ const HtmlTopicList = ({data})=> {
         });
       };
       const onSubmit = () => {
-        console.log(state.selected);
+        
         setState({
           ...state,
           selected: {}
@@ -65,6 +68,8 @@ const HtmlTopicList = ({data})=> {
                   onChange={onRadioChange}
                   name={row.name}
                   value={option}
+                  key={option}
+                  className = {ChooseColor(option)}
                 />
               );
             }
@@ -76,6 +81,9 @@ const HtmlTopicList = ({data})=> {
         });
         return (
           <div>
+            <div>
+                <h1>HTML & CSS</h1>
+            </div>
             <Table
               columns={columns}
               dataSource={rowHeaders}
@@ -87,12 +95,35 @@ const HtmlTopicList = ({data})=> {
             <br />
             {JSON.stringify(state.selected)}
             <br />
-            <Button onClick={onSubmit} type="primary">
+            <Button onClick={handleSubmit} type="primary">
               {" "}
               Submit
             </Button>
           </div>
         );
+}
+function ChooseColor(option) {
+  let className = "";
+  switch(option){
+    case 'Very Unconfident':
+    className= '#ff1a1a';
+    break;
+    case 'Unconfident':
+    className= '#ff8c1a';
+    break;
+    case 'Somewhat Confident':
+    className= '#ffff1a';
+    break;
+    case 'Confident':
+    className= '#c6ff1a';
+    break;
+    case 'Very Confident':
+    className= '#53ff1a';
+    break;
+    default:
+      className = "";
+  }
+  return className;
 }
 // const HtmlTopicList = ({ data }) => {
 //   const [topics, setTopics] = useState(data);

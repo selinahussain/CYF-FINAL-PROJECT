@@ -30,7 +30,8 @@ const SubjectList = ({ data }) => {
   return (
     <div>
       
-
+      <h3>How to use your tracker page!</h3>
+      <p>Select your level of confidence with the buttons next to each statement. Choosing 'not confident' will colour the statement red. Choosing 'needs review' will colour the statement yellow. Finally, choosing 'feel confident' will colour the statement green. Red topics are those you don't understand well. Yellow still need work. Green are the ones you feel most confident with.</p>
       <div className="row">
           {subjects.map(({ name }) => (
             <div>
