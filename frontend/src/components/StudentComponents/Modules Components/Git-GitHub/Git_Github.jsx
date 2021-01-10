@@ -4,6 +4,7 @@ import Spinner from "../../../UI/Spinner";
 import {Table, Button, Tag} from 'antd'
 import 'antd/dist/antd.css'
 import "./Git_GitHub.scss";
+import {Demo, getAverage} from "../JavaScript/JavaScript"
 
 
 export default function Git_GitHub() {
@@ -104,6 +105,7 @@ const GitTopicList = ({ data }) => {
         {" "}
         Submit
       </Button>
+      <Demo newAddingValue={getAverage(state.selected)}/>
     </div>
   );
 };

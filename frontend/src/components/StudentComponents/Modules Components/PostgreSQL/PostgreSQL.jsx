@@ -1,9 +1,10 @@
 import React , {useState} from 'react';
 import useFetch from "../../../../Auth/useFetch";
 import Spinner from "../../../UI/Spinner";
-import {Table, Button, Tag} from 'antd'
+import {Table, Button} from 'antd'
 import 'antd/dist/antd.css'
 import "./PostgreSQL.scss";
+import {Demo, getAverage} from "../JavaScript/JavaScript"
 
 
 export default function PostgreSQL() {
@@ -104,6 +105,7 @@ const PostgreSqlTopicList = ({ data }) => {
         {" "}
         Submit
       </Button>
+      <Demo newAddingValue={getAverage(state.selected)}/>
     </div>
   );
 };

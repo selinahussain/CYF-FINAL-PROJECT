@@ -134,6 +134,21 @@ router.get('/Modules/PostgreSQL/Topics', function (req, res) {
 });
 
 
+router.get('/Modules/Users/:userid/GetGrade', function (req, res) {
+  let userId = req.params.userid
+  let selectPostgreSQLTopics = `SELECT * FROM grade WHERE users_id = ${userId}; `;
+  pool.query(selectPostgreSQLTopics, (err, results) => {
+    if (err) {
+      throw err;
+    }
+
+    if (results.rows.length > 0) {
+      res.json(results.rows);
+    }
+  });
+});
+
+
 
 router.post('/add-grade', (req, res) => {
   let data = req.body;
