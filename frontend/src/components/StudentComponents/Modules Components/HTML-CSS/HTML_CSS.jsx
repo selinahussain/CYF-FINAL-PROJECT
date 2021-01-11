@@ -1,10 +1,16 @@
+<<<<<<< HEAD
 import React, { useState } from "react";
+=======
+
+import React, { useState,useEffect} from "react";
+>>>>>>> 48d30a495eef0587116a5eb4b07a6d1373dc9e27
 import useFetch from "../../../../Auth/useFetch";
 import Spinner from "../../../UI/Spinner";
 import { Table, Button} from "antd";
 import "antd/dist/antd.css";
 import "./HTML_CSS.scss";
 import {Demo, getAverage} from "../JavaScript/JavaScript"
+import { useAuth } from "../../../../Auth/use-auth";
 
 
 export default function HTML_CSS() {
@@ -12,26 +18,55 @@ export default function HTML_CSS() {
     "http://localhost:3001/api/Modules/HTML_CSS/Topics"
   );
   console.log(data);
+  const auth = useAuth();
+
+  const [grade,setGrade] = useState({})
+ 
+ 
+ 
+  let { status:gradeStatus, data:gradeData, error:gradeError } = useFetch(
+   `http://localhost:3001/api/Modules/Users/${auth.user.id}/GetGrade`
+ );
+ 
+ useEffect(() => {
+  if(!gradeData || !data){
+     return 
+  }
+  let topicId = data.map(x=>x.topic_id)
+ 
+  let tempGradeData = {}
+  gradeData.forEach((item)=>{
+    if(topicId.includes(item.topic_id)){
+     tempGradeData[item.topic_id]=item.vote;
+    }
+    
+  })
+ setGrade(tempGradeData);
+  
+ }, [gradeData,data])
+ 
+ 
+ console.log(gradeData);
+ 
 
   if (status === "error") {
     return <div>Error: {error.message}</div>;
   } else if (status === "success") {
-    return <HtmlTopicList data={data} />;
+    return <HtmlTopicList data={data}  gradeData = {grade} />;
   } else {
     return <Spinner />;
   }
 }
 
-const HtmlTopicList = ({ data }) => {
-  // let history = useHistory();
-  //let auth = useAuth();
+const HtmlTopicList = ({ data ,gradeData }) => {
+  
 
   console.log("this the data", data);
   const tableHeaders = [20, 40, 60, 80, 100];
-
+  const auth = useAuth()
   const [state, setState] = useState({
     task: { options: tableHeaders, extras: data },
-    selected: {},
+    selected: gradeData,
   });
   const onRadioChange = (e) => {
     console.log(e.currentTarget);
@@ -42,6 +77,12 @@ const HtmlTopicList = ({ data }) => {
       selected: { ...state.selected, [name]: value },
     });
   };
+
+  useEffect(()=>{
+    setState({...state,selected:gradeData})
+  },[gradeData])
+
+
   const onSubmit = () => {
     // convert TO array
     const results = [];
@@ -51,7 +92,7 @@ const HtmlTopicList = ({ data }) => {
         vote: value,
       });
     }
-    fetch("http://localhost:3001/api/add-grade", {
+    fetch(`http://localhost:3001/api/users/${auth.user.id}/add-grade`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

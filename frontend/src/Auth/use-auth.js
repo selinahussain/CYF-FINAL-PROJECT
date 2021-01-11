@@ -31,9 +31,10 @@ function useProvideAuth() {
     })
       .then((res) => res.json())
       .then((data) => {
-        const { token, user: { name } } = data;
+        const { token, user: { name,id } } = data;
+        console.log(data);
         setToken(token);
-        setUser({  token, name  });
+        setUser({  token, name, id });
         cb();
       });
   };
@@ -82,9 +83,9 @@ function useProvideAuth() {
         if (!data.error) {
           const {
             token,
-            user: { name },
+            user: { name,id },
           } = data;
-          setUser({ token, name });
+          setUser({ token, name ,id});
         }
       });
   }, []);

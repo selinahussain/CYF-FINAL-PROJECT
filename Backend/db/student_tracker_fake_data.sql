@@ -185,6 +185,14 @@ INSERT INTO users (name, email, password) VALUES('Selina','selina@yahoo.com', '$
 INSERT INTO users (name, email,password) VALUES('Mursel','mursel@yahoo.com','$2b$10$hFFPVUlRVXgLwsJ0RU8Tueg/awvz.MPD270QeecW.qCtNvX/aWat2');
 INSERT INTO users (name, email,password) VALUES('Osman','osman@yahoo.com','$2b$10$RAWB8u5qVkC2V2mD5Al1jOF9nQfMWIoY7Y1WRSZ53S.N7C0H/Fcpm');
 
-INSERT INTO grade (vote, topic_id,users_id) VALUES (20, 1,1);
-INSERT INTO grade (vote, topic_id,users_id) VALUES (40, 2,2);
+INSERT INTO grade (vote, topic_id,users_id) VALUES (20, 2,4);
+INSERT INTO grade (vote, topic_id,users_id) VALUES (40, 3,4);
+INSERT INTO grade (vote, topic_id,users_id) VALUES (40, 4,4);
+INSERT INTO grade (vote, topic_id,users_id) VALUES (40, 5,4);
+INSERT INTO grade (vote, topic_id,users_id) VALUES (40, 6,4);
+INSERT INTO grade (vote, topic_id,users_id) VALUES (40, 7,4);
+INSERT INTO grade (vote, topic_id,users_id) VALUES (40, 8,4);
+INSERT INTO grade (vote, topic_id,users_id) VALUES (40, 9,4);
+INSERT INTO grade (vote, topic_id,users_id) VALUES (40, 10,4);
+
 
