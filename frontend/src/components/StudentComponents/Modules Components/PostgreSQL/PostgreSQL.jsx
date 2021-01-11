@@ -23,7 +23,7 @@ export default function PostgreSQL() {
 
 const PostgreSqlTopicList = ({ data }) => {
 
-  console.log("this the data", data);
+  //console.log("this the data", data);
   const tableHeaders = [20, 40, 60, 80, 100];
 
   const [state, setState] = useState({
@@ -31,7 +31,7 @@ const PostgreSqlTopicList = ({ data }) => {
     selected: {},
   });
   const onRadioChange = (e) => {
-    console.log(e.currentTarget);
+    
     let name = e.currentTarget.id;
     let value = e.currentTarget.value;
     setState({
