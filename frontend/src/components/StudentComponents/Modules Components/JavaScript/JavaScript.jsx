@@ -1,23 +1,53 @@
-import React, { useState } from "react";
+import React, { useState,useEffect} from "react";
 import useFetch from "../../../../Auth/useFetch";
 import Spinner from "../../../UI/Spinner";
 import { Table, Button } from "antd";
 import { Progress } from "antd";
 import "antd/dist/antd.css";
 import "./JavaScript.scss";
-//import { Fragment } from "react";
-//import Demo from "./PrsgsBarJs";
+import { useAuth } from "../../../../Auth/use-auth";
+
+
 
 export default function JavaScript() {
   let { status, data, error } = useFetch(
     "http://localhost:3001/api/Modules/JavaScript/Topics"
   );
-  /// console.log(data);
+  console.log(data);
+ const auth = useAuth();
+
+ const [grade,setGrade] = useState({})
+
+
+
+ let { status:gradeStatus, data:gradeData, error:gradeError } = useFetch(
+  `http://localhost:3001/api/Modules/Users/${auth.user.id}/GetGrade`
+);
+
+useEffect(() => {
+ if(!gradeData || !data){
+    return 
+ }
+ let topicId = data.map(x=>x.topic_id)
+
+ let tempGradeData = {}
+ gradeData.forEach((item)=>{
+   if(topicId.includes(item.topic_id)){
+    tempGradeData[item.topic_id]=item.vote;
+   }
+   
+ })
+setGrade(tempGradeData);
+ 
+}, [gradeData,data])
+
+
+console.log(gradeData);
 
   if (status === "error") {
     return <div>Error: {error.message}</div>;
   } else if (status === "success") {
-    return <JavaScriptTopicList data={data} />;
+    return <JavaScriptTopicList data={data} gradeData = {grade}/>;
   } else {
     return <Spinner />;
   }
@@ -39,19 +69,18 @@ export const Demo =({newAddingValue}) =>{
       }}
       percent={newAddingValue}
       status="active"
-
     />
     </div>
   )
 }
 
 
-const JavaScriptTopicList = ({ data }) => {
+const JavaScriptTopicList = ({ data,gradeData }) => {
   const tableHeaders = [20, 40, 60, 80, 100];
-
+  const auth = useAuth()
   const [state, setState] = useState({
     task: { options: tableHeaders, extras: data },
-    selected: {},
+    selected: gradeData,
   });
   const onRadioChange = (e) => {
     let name = e.currentTarget.id;
@@ -61,7 +90,12 @@ const JavaScriptTopicList = ({ data }) => {
       selected: { ...state.selected, [name]: value },
     });
   };
+console.log(state);
 
+useEffect(()=>{
+  setState({...state,selected:gradeData})
+},[gradeData])
+  
 
   const onSubmit = () => {
     // convert TO array
@@ -72,7 +106,7 @@ const JavaScriptTopicList = ({ data }) => {
         vote: value,
       });
     }
-    fetch("http://localhost:3001/api/add-grade", {
+    fetch(`http://localhost:3001/api/users/${auth.user.id}/add-grade`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -122,9 +156,9 @@ const JavaScriptTopicList = ({ data }) => {
         bordered
         pagination={false}
       />
-      {/* <br />
+      <br />
       {JSON.stringify(state.selected)}
-      <br /> */}
+      <br />
       <Button onClick={onSubmit} type="primary" id="submitBtn">
         {" "}
         Submit

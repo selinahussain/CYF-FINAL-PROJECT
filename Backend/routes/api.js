@@ -150,12 +150,13 @@ router.get('/Modules/Users/:userid/GetGrade', function (req, res) {
 
 
 
-router.post('/add-grade', (req, res) => {
+router.post('/users/:userid/add-grade', (req, res) => {
   let data = req.body;
+  let userId= req.params.userid;
   console.log(data);
-  let query = 'insert into grade (vote,topic_id) VALUES' 
-    let values = data.map(x => {
-      return `(${x.vote}, ${x.topic_id})`
+  let query = 'insert into grade (vote,topic_id,users_id) VALUES' 
+  let values = data.map(x => {
+      return `(${x.vote}, ${x.topic_id},${userId})`
   }).join(',');
    query += values;
   

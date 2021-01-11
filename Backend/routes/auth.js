@@ -24,10 +24,12 @@ router.post(
   }),
   (req, res) => {
     // if reached here - password valid
-    const { name } = req.user;
+    const { name,id } = req.user;
+    console.log(req.user);
     // generate and send token to frontend
     const token = jwt.sign({ email: req.user.email }, 'jwt_secret');
-    res.json({ token: token, user: { name } });
+    res.json({ token: token, user: { name,id } });
+
   }
 );
 
@@ -53,7 +55,7 @@ router.post('/token', async (req, res) => {
         if (results.rows.length > 0) {
           const [user] = results.rows;
 
-          return res.json({ token, user: { name: user.name } });
+          return res.json({ token, user: { name: user.name , id:user.id} });
         } else {
           return res.json({ error: { message: 'User not found' } });
         }
