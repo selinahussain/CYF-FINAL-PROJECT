@@ -65,12 +65,6 @@ CREATE TABLE topic (
     student_subject_id INT REFERENCES student_subject(student_subject_id)
 );
 
-CREATE TABLE grade (
-    grade_id SERIAL PRIMARY KEY,
-    vote INT,
-    topic_id INT REFERENCES topic(topic_id)
-);
-
 
 CREATE TABLE users (
 id SERIAL PRIMARY KEY,
@@ -78,6 +72,16 @@ name  VARCHAR(100) NOT NULL ,
 email VARCHAR(100)NOT NULL,
 password VARCHAR(200) NOT NULL
 );
+
+
+CREATE TABLE grade (
+    grade_id SERIAL PRIMARY KEY,
+    vote INT,
+    topic_id INT REFERENCES topic(topic_id),
+    users_id INT REFERENCES users(id)
+);
+
+
 
 
 
@@ -177,9 +181,18 @@ INSERT INTO topic (name, subject_name , student_subject_id) VALUES ('Be able to 
 INSERT INTO topic (name, subject_name , student_subject_id) VALUES ('Understand what hooks are','REACTJS', 1);
 
 
-INSERT INTO grade (vote, topic_id) VALUES (25, 1);
-INSERT INTO grade (vote, topic_id) VALUES (50, 2);
-
 INSERT INTO users (name, email, password) VALUES('Selina','selina@yahoo.com', '$2b$10$dmm9x4XcBFPPqz5WqTGIUeu3DqzHEHRCU/MI01Ru0ihwuAvD99UGa');
 INSERT INTO users (name, email,password) VALUES('Mursel','mursel@yahoo.com','$2b$10$hFFPVUlRVXgLwsJ0RU8Tueg/awvz.MPD270QeecW.qCtNvX/aWat2');
 INSERT INTO users (name, email,password) VALUES('Osman','osman@yahoo.com','$2b$10$RAWB8u5qVkC2V2mD5Al1jOF9nQfMWIoY7Y1WRSZ53S.N7C0H/Fcpm');
+
+INSERT INTO grade (vote, topic_id,users_id) VALUES (20, 2,4);
+INSERT INTO grade (vote, topic_id,users_id) VALUES (40, 3,4);
+INSERT INTO grade (vote, topic_id,users_id) VALUES (40, 4,4);
+INSERT INTO grade (vote, topic_id,users_id) VALUES (40, 5,4);
+INSERT INTO grade (vote, topic_id,users_id) VALUES (40, 6,4);
+INSERT INTO grade (vote, topic_id,users_id) VALUES (40, 7,4);
+INSERT INTO grade (vote, topic_id,users_id) VALUES (40, 8,4);
+INSERT INTO grade (vote, topic_id,users_id) VALUES (40, 9,4);
+INSERT INTO grade (vote, topic_id,users_id) VALUES (40, 10,4);
+
+

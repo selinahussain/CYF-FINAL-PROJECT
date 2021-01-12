@@ -16,6 +16,7 @@ function initialize (passport) {
         }
         if (results.rows.length > 0) {
           const user = results.rows[0]; // if the user been found in the database .. it will be stored in the variable user
+          
           bcrypt.compare(password, user.password, (err, isMatch) => {
             if (err) {
               throw err;

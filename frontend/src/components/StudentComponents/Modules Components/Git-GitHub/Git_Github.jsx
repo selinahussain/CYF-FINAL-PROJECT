@@ -1,18 +1,52 @@
-import React , {useState} from 'react';
+import React , {useState,useEffect} from 'react';
 import useFetch from "../../../../Auth/useFetch";
 import Spinner from "../../../UI/Spinner";
 import {Table, Button, Tag} from 'antd'
 import 'antd/dist/antd.css'
 import "./Git_GitHub.scss";
+import {Demo, getAverage} from "../JavaScript/JavaScript"
+import { useAuth } from "../../../../Auth/use-auth";
 
 
 export default function Git_GitHub() {
   let { status, data, error } = useFetch('http://localhost:3001/api/Modules/Git-GitHub/Topics');
 
+
+  const auth = useAuth();
+
+  const [grade,setGrade] = useState({})
+ 
+ 
+ 
+  let { status:gradeStatus, data:gradeData, error:gradeError } = useFetch(
+   `http://localhost:3001/api/Modules/Users/${auth.user.id}/GetGrade`
+ );
+ 
+ useEffect(() => {
+  if(!gradeData || !data){
+     return 
+  }
+  let topicId = data.map(x=>x.topic_id)
+ 
+  let tempGradeData = {}
+  gradeData.forEach((item)=>{
+    if(topicId.includes(item.topic_id)){
+     tempGradeData[item.topic_id]=item.vote;
+    }
+    
+  })
+ setGrade(tempGradeData);
+  
+ }, [gradeData,data])
+ 
+ 
+ console.log(gradeData);
+ 
+
   if (status === 'error') {
     return <div>Error: {error.message}</div>;
   } else if (status === 'success') {
-    return <GitTopicList data={data} />;
+    return <GitTopicList data={data} gradeData = {grade} />;
   } else {
     return <Spinner />;
   }
@@ -20,14 +54,14 @@ export default function Git_GitHub() {
 }
 
 
-const GitTopicList = ({ data }) => {
+const GitTopicList = ({ data,gradeData }) => {
 
   console.log("this the data", data);
   const tableHeaders = [20, 40, 60, 80, 100];
-
+  const auth = useAuth()
   const [state, setState] = useState({
     task: { options: tableHeaders, extras: data },
-    selected: {},
+    selected: gradeData,
   });
   const onRadioChange = (e) => {
     console.log(e.currentTarget);
@@ -38,6 +72,12 @@ const GitTopicList = ({ data }) => {
       selected: { ...state.selected, [name]: value },
     });
   };
+
+  useEffect(()=>{
+    setState({...state,selected:gradeData})
+  },[gradeData])
+
+
   const onSubmit = () => {
     // convert TO array
     const results = [];
@@ -47,7 +87,7 @@ const GitTopicList = ({ data }) => {
         vote: value,
       });
     }
-    fetch("http://localhost:3001/api/add-grade", {
+    fetch(`http://localhost:3001/api/users/${auth.user.id}/add-grade`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -104,6 +144,7 @@ const GitTopicList = ({ data }) => {
         {" "}
         Submit
       </Button>
+      <Demo newAddingValue={getAverage(state.selected)}/>
     </div>
   );
 };
