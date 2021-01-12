@@ -29,14 +29,8 @@ const SubjectList = ({ data }) => {
   return (
     <div>
       <div className="row">
-
-          {subjects.map(({ name }) => (
-            <div className= "moduleDiv">
-              <div className="text-center modules" key={name}>
-                <Link to={`/modules/${name}`}>
-
         {subjects.map(({ name }) => (
-          <div>
+          <div className= "moduleDiv">
             <div className="text-center modules" key={name}>
               <Link to={`/modules/${name}`}>
 
@@ -45,7 +39,9 @@ const SubjectList = ({ data }) => {
 
               {/* <Progress type="circle" percent={100} width={60} /> */}
             </div>
+            <div>
             <Route path={`/modules/${name}`} component={name} />
+          </div>
           </div>
         ))}
       </div>
