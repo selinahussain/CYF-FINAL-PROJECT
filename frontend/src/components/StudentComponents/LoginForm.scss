@@ -8,6 +8,11 @@
 
 .loginButton {
   background-color: #f3c9ca;
+  color: rgba(0, 0, 0, 0.85);
+}
+
+.loginButton:hover {
+  color: #f3c9ca;
 }
 .emailPwDiv {
   background-color: #d12e2f;
