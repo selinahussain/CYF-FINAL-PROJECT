@@ -1,0 +1,46 @@
+.container{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  & .all-regions{
+    display: flex;
+    
+    flex-wrap: wrap;
+    & div{
+      display: flex;
+      justify-content: center;
+    align-content: flex-end;
+    align-items: flex-end;
+      background-color: #c4c4c4;
+      width: 20rem;
+      height: 15rem;
+      padding: 1rem;
+      margin: 1rem;
+    }
+    
+    & .West{
+      background-image: url("https://codeyourfuture.io/wp-content/uploads/2020/02/bir-400x400-1.jpg");
+      background-size: 20rem;
+    }
+    & .London{
+      background-image: url("https://codeyourfuture.io/wp-content/uploads/2020/02/ldn-400x400-1.jpg");
+      background-size: 20rem;
+    }
+    & .Northwest{
+      background-image: url("https://codeyourfuture.io/wp-content/uploads/2020/02/man-400x400-1.jpg");
+      background-size: 20rem;
+    }
+    & .Glasgow{
+      background-image: url("https://codeyourfuture.io/wp-content/uploads/2020/02/gla-400x400-1.jpg");
+      background-size: 20rem;
+    }
+    & .Roma{
+      background-image: url("https://codeyourfuture.io/wp-content/uploads/2020/02/roma-400x400-1.jpg");
+      background-size: 20rem;
+    }
+    & .Cape{
+      background-image: url("https://codeyourfuture.io/wp-content/uploads/2020/08/CapeTown.png");
+      background-size: 20rem;
+    }
+  }
+}

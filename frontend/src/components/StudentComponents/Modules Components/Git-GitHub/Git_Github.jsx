@@ -1,15 +1,14 @@
 import React , {useState,useEffect} from 'react';
 import useFetch from "../../../../Auth/useFetch";
 import Spinner from "../../../UI/Spinner";
-import {Table, Button, Tag} from 'antd'
+import {Table, Button} from 'antd'
 import 'antd/dist/antd.css'
 import "./Git_GitHub.scss";
 import {Demo, getAverage} from "../JavaScript/JavaScript"
 import { useAuth } from "../../../../Auth/use-auth";
 
-
 export default function Git_GitHub() {
-  let { status, data, error } = useFetch('http://localhost:3001/api/Modules/Git-GitHub/Topics');
+  let { status, data, error } = useFetch('http://localhost:3001/api/Modules/Git_GitHub/Topics');
 
 
   const auth = useAuth();
@@ -54,10 +53,11 @@ export default function Git_GitHub() {
 }
 
 
+
 const GitTopicList = ({ data,gradeData }) => {
 
   console.log("this the data", data);
-  const tableHeaders = [20, 40, 60, 80, 100];
+  const tableHeaders = ['20%', '40%', '60%', '80%', '100%'];
   const auth = useAuth()
   const [state, setState] = useState({
     task: { options: tableHeaders, extras: data },
@@ -110,6 +110,7 @@ const GitTopicList = ({ data,gradeData }) => {
       title: option,
       key: option,
       render: (row) => {
+        
         return (
           <input
             type="radio"
@@ -118,6 +119,7 @@ const GitTopicList = ({ data,gradeData }) => {
             name={row.name}
             id={row.id}
             value={option}
+            
           />
         );
       },

@@ -11,6 +11,8 @@ import Git_GitHub from "./components/StudentComponents/Modules Components/Git-Gi
 import NodeJS from "./components/StudentComponents/Modules Components/NodeJS/NodeJS";
 import PostgreSQL from "./components/StudentComponents/Modules Components/PostgreSQL/PostgreSQL";
 import REACTJS from "./components/StudentComponents/Modules Components/REACTJS/REACTJS";
+import MentorRegionPage from './Pages/MentorPages/MentorRegion/MentorRegionPage';
+import MentorClassesPage from './Pages/MentorPages/MentorClassesPage/MentorClassesPage';
 
 
 
@@ -50,6 +52,12 @@ function App({match}) {
 						</PrivateRoute>
 						<PrivateRoute path="/modules/ReactJS">
 						<REACTJS/>
+						</PrivateRoute>
+						<PrivateRoute path="/region">
+						<MentorRegionPage />
+						</PrivateRoute>
+						<PrivateRoute path="/classes">
+						<MentorClassesPage />
 						</PrivateRoute>
 					</Switch>
 				</Container>
