@@ -33,7 +33,7 @@ const SubjectList = ({ data }) => {
 
       <div className="row">
           {subjects.map(({ name }) => (
-            <div>
+            <div className= "moduleDiv">
               <div className="text-center modules" key={name}>
                 <Link to={`/modules/${name}`}>
                 <h2 className="">{name}</h2>

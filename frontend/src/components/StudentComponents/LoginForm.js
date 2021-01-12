@@ -67,7 +67,7 @@ const LoginForm = () => {
           <Button
             type="submit"
             variant="primary"
-            className="btn-lg rounded-lg text-dark loginButton"
+            className="btn-lg rounded-lg loginButton"
           >
             Login
           </Button>
