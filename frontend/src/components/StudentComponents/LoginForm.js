@@ -14,7 +14,7 @@ const LoginForm = () => {
   const onSubmit = (data) => {
     auth.signin(data.email, data.password, () => {
       if(data.email==="aaa@gmail.com"){
-        history.replace({pathname:"/mentor"})
+        history.replace({pathname:"/mentor_main"})
       }else{
       history.replace({ pathname: "/student_main" });
     }});
