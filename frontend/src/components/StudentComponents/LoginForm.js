@@ -14,7 +14,7 @@ const LoginForm = () => {
   const onSubmit = (data) => {
     auth.signin(data.email, data.password, () => {
       if(data.email==="aaa@gmail.com"){
-        history.replace({pathname:"/region"})
+        history.replace({pathname:"/mentor_main"})
       }else{
       history.replace({ pathname: "/student_main" });
     }});
@@ -70,7 +70,7 @@ const LoginForm = () => {
           <Button
             type="submit"
             variant="primary"
-            className="btn-lg rounded-lg text-dark loginButton"
+            className="btn-lg rounded-lg loginButton"
           >
             Login
           </Button>
