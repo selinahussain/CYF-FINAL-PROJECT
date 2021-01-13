@@ -101,7 +101,7 @@ const NodeJsTopicList = ({ data ,gradeData }) => {
     title: "NodeJS Topics",
     dataIndex: "name",
     key: "name",
-    width: "45vw",
+    width: "25vw",
   });
   state.task.options.forEach((option, i) => {
     columns.push({

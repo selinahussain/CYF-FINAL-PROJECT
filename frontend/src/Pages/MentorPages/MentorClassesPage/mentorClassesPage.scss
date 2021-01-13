@@ -1,0 +1,56 @@
+//@import '../../../Assets/images/cyf-classes.jpg';
+body{
+  
+  //background-color: #c4c4c4;
+  .AllContents{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    
+    //background-color: #c4c4c4;
+  
+    & .classes-div{
+      display: flex;
+      flex-direction: column-reverse;
+      margin-right: 1rem;
+      padding: 0.1rem;
+      width: 20rem;
+      & .single-class{
+        display: flex;
+        flex-direction: column;
+        & .text{
+          background-color: red;
+          width: 20rem;
+        }
+        & .West{
+          color: #ffffff;
+          font-size: 2rem;
+          display: flex;
+          justify-content: center;
+          align-items: flex-end;
+          align-content: flex-end;
+          background-image: url(../../../Assets/images/class.png);
+          background-color: #c4c4c4;
+          background-size: 20rem;
+          height: 15rem;
+          display: flex;
+          width: 20rem;
+          margin: 2rem;
+        }
+        & .Midlands-2{
+          color: #000000;
+          background-image: url(../../../Assets/images/class1.png);
+        }
+      }
+      
+    }
+    & .background-div{
+      width: 100%;
+      margin-left: 8rem;
+      & img{
+        width: 100%;
+        height: 40rem;
+      }
+    } 
+  }
+}
