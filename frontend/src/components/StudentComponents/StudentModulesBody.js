@@ -28,6 +28,8 @@ const SubjectList = ({ data }) => {
 
   return (
     <div>
+
+
       <div className="row">
         {subjects.map(({ name }) => (
           <div className= "moduleDiv">
