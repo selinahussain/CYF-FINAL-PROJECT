@@ -1,64 +1,79 @@
-import React , {useState,useEffect} from 'react';
+import React, { useState, useEffect } from "react";
 import useFetch from "../../../../Auth/useFetch";
 import Spinner from "../../../UI/Spinner";
+<<<<<<< HEAD
+import { Table, Button, Tag } from "antd";
+import "antd/dist/antd.css";
+=======
 import {Table, Button} from 'antd'
 import 'antd/dist/antd.css'
+>>>>>>> 575278345652b742e3ace330c7a7aa9e1b833277
 import "./Git_GitHub.scss";
-import {Demo, getAverage} from "../JavaScript/JavaScript"
+import { Demo, getAverage } from "../JavaScript/JavaScript";
 import { useAuth } from "../../../../Auth/use-auth";
+<<<<<<< HEAD
+import HowToIntro from "../../../StudentComponents/HowToIntro";
+
+export default function Git_GitHub() {
+  let { status, data, error } = useFetch(
+    "http://localhost:3001/api/Modules/Git-GitHub/Topics"
+  );
+=======
 
 export default function Git_GitHub() {
   let { status, data, error } = useFetch('http://localhost:3001/api/Modules/Git_GitHub/Topics');
 
+>>>>>>> 575278345652b742e3ace330c7a7aa9e1b833277
 
   const auth = useAuth();
 
-  const [grade,setGrade] = useState({})
- 
- 
- 
-  let { status:gradeStatus, data:gradeData, error:gradeError } = useFetch(
-   `http://localhost:3001/api/Modules/Users/${auth.user.id}/GetGrade`
- );
- 
- useEffect(() => {
-  if(!gradeData || !data){
-     return 
-  }
-  let topicId = data.map(x=>x.topic_id)
- 
-  let tempGradeData = {}
-  gradeData.forEach((item)=>{
-    if(topicId.includes(item.topic_id)){
-     tempGradeData[item.topic_id]=item.vote;
-    }
-    
-  })
- setGrade(tempGradeData);
-  
- }, [gradeData,data])
- 
- 
- console.log(gradeData);
- 
+  const [grade, setGrade] = useState({});
 
-  if (status === 'error') {
+  let { status: gradeStatus, data: gradeData, error: gradeError } = useFetch(
+    `http://localhost:3001/api/Modules/Users/${auth.user.id}/GetGrade`
+  );
+
+  useEffect(() => {
+    if (!gradeData || !data) {
+      return;
+    }
+    let topicId = data.map((x) => x.topic_id);
+
+    let tempGradeData = {};
+    gradeData.forEach((item) => {
+      if (topicId.includes(item.topic_id)) {
+        tempGradeData[item.topic_id] = item.vote;
+      }
+    });
+    setGrade(tempGradeData);
+  }, [gradeData, data]);
+
+  console.log(gradeData);
+
+  if (status === "error") {
     return <div>Error: {error.message}</div>;
-  } else if (status === 'success') {
-    return <GitTopicList data={data} gradeData = {grade} />;
+  } else if (status === "success") {
+    return <GitTopicList data={data} gradeData={grade} />;
   } else {
     return <Spinner />;
   }
-
 }
 
+const styling = {
+  stroke: "rgb(209, 46, 47)",
+  "stroke-width": 9,
+};
 
+<<<<<<< HEAD
+const GitTopicList = ({ data, gradeData }) => {
+=======
 
 const GitTopicList = ({ data,gradeData }) => {
 
+>>>>>>> 575278345652b742e3ace330c7a7aa9e1b833277
   console.log("this the data", data);
   const tableHeaders = [20, 40, 60, 80, 100];
-  const auth = useAuth()
+  const auth = useAuth();
   const [state, setState] = useState({
     task: { options: tableHeaders, extras: data },
     selected: gradeData,
@@ -73,10 +88,9 @@ const GitTopicList = ({ data,gradeData }) => {
     });
   };
 
-  useEffect(()=>{
-    setState({...state,selected:gradeData})
-  },[gradeData])
-
+  useEffect(() => {
+    setState({ ...state, selected: gradeData });
+  }, [gradeData]);
 
   const onSubmit = () => {
     // convert TO array
@@ -100,15 +114,16 @@ const GitTopicList = ({ data,gradeData }) => {
   };
   let columns = [];
   columns.push({
-    title: "Git/GitHub Topics",
+    title: "Topics",
     dataIndex: "name",
     key: "name",
-    width: "45vw",
+    width: "30vw",
   });
   state.task.options.forEach((option, i) => {
     columns.push({
       title: option,
       key: option,
+      align: "center",
       render: (row) => {
         
         return (
@@ -131,6 +146,13 @@ const GitTopicList = ({ data,gradeData }) => {
   });
   return (
     <div>
+      <div className="backDiv">
+        <Button href="/student_main" className="backLink btn-lg rounded-lg">
+          Back To Modules
+        </Button>
+      </div>
+      <h1>Git/Github</h1>
+      <HowToIntro />
       <Table
         columns={columns}
         dataSource={rowHeaders}
@@ -138,15 +160,21 @@ const GitTopicList = ({ data,gradeData }) => {
         bordered
         pagination={false}
       />
-      {/* <Tag color="red">Selected options</Tag> */}
+
       <br />
-      {JSON.stringify(state.selected)}
+      <Demo newAddingValue={getAverage(state.selected)} />
       <br />
-      <Button onClick={onSubmit} type="primary">
-        {" "}
-        Submit
-      </Button>
-      <Demo newAddingValue={getAverage(state.selected)}/>
+      <div className="subBut">
+        <Button
+          onClick={onSubmit}
+          type="primary"
+          id="submitBtn"
+          className="btn-lg rounded-lg"
+        >
+          {" "}
+          Submit
+        </Button>
+      </div>
     </div>
   );
 };

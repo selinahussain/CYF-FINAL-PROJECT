@@ -1,4 +1,4 @@
-import React, { useState,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import useFetch from "../../../../Auth/useFetch";
 import Spinner from "../../../UI/Spinner";
 import { Table, Button } from "antd";
@@ -6,78 +6,75 @@ import { Progress } from "antd";
 import "antd/dist/antd.css";
 import "./JavaScript.scss";
 import { useAuth } from "../../../../Auth/use-auth";
-
-
+import HowToIntro from "../../../StudentComponents/HowToIntro";
 
 export default function JavaScript() {
   let { status, data, error } = useFetch(
     "http://localhost:3001/api/Modules/JavaScript/Topics"
   );
   console.log(data);
- const auth = useAuth();
+  const auth = useAuth();
 
- const [grade,setGrade] = useState({})
+  const [grade, setGrade] = useState({});
 
+  let { status: gradeStatus, data: gradeData, error: gradeError } = useFetch(
+    `http://localhost:3001/api/Modules/Users/${auth.user.id}/GetGrade`
+  );
 
+  useEffect(() => {
+    if (!gradeData || !data) {
+      return;
+    }
+    let topicId = data.map((x) => x.topic_id);
 
- let { status:gradeStatus, data:gradeData, error:gradeError } = useFetch(
-  `http://localhost:3001/api/Modules/Users/${auth.user.id}/GetGrade`
-);
+    let tempGradeData = {};
+    gradeData.forEach((item) => {
+      if (topicId.includes(item.topic_id)) {
+        tempGradeData[item.topic_id] = item.vote;
+      }
+    });
+    setGrade(tempGradeData);
+  }, [gradeData, data]);
 
-useEffect(() => {
- if(!gradeData || !data){
-    return 
- }
- let topicId = data.map(x=>x.topic_id)
-
- let tempGradeData = {}
- gradeData.forEach((item)=>{
-   if(topicId.includes(item.topic_id)){
-    tempGradeData[item.topic_id]=item.vote;
-   }
-   
- })
-setGrade(tempGradeData);
- 
-}, [gradeData,data])
-
-
-console.log(gradeData);
+  console.log(gradeData);
 
   if (status === "error") {
     return <div>Error: {error.message}</div>;
   } else if (status === "success") {
-    return <JavaScriptTopicList data={data} gradeData = {grade}/>;
+    return <JavaScriptTopicList data={data} gradeData={grade} />;
   } else {
     return <Spinner />;
   }
 }
 
-export const getAverage = (valuesObject) =>{
-  return parseInt(Object.values(valuesObject).reduce((accumulator,currentValue)=>accumulator+parseInt(currentValue),0)/Object.values(valuesObject).length)
-}
+export const getAverage = (valuesObject) => {
+  return parseInt(
+    Object.values(valuesObject).reduce(
+      (accumulator, currentValue) => accumulator + parseInt(currentValue),
+      0
+    ) / Object.values(valuesObject).length
+  );
+};
 
-
-export const Demo =({newAddingValue}) =>{
-
+export const Demo = ({ newAddingValue }) => {
   return (
     <div>
-       <Progress
-      strokeColor={{
-        from: '#d12f2f',
-        to: '#87d068',
-      }}
-      percent={newAddingValue}
-      status="active"
-    />
+      <Progress
+        strokeColor={{
+          from: "#d12f2f",
+          to: "#87d068",
+        }}
+        strokeWidth="15px"
+        percent={newAddingValue}
+        status="active"
+      />
     </div>
-  )
-}
+  );
+};
 
-
-const JavaScriptTopicList = ({ data,gradeData }) => {
+const JavaScriptTopicList = ({ data, gradeData }) => {
   const tableHeaders = [20, 40, 60, 80, 100];
-  const auth = useAuth()
+  const auth = useAuth();
   const [state, setState] = useState({
     task: { options: tableHeaders, extras: data },
     selected: gradeData,
@@ -90,12 +87,11 @@ const JavaScriptTopicList = ({ data,gradeData }) => {
       selected: { ...state.selected, [name]: value },
     });
   };
-console.log(state);
+  console.log(state);
 
-useEffect(()=>{
-  setState({...state,selected:gradeData})
-},[gradeData])
-  
+  useEffect(() => {
+    setState({ ...state, selected: gradeData });
+  }, [gradeData]);
 
   const onSubmit = () => {
     // convert TO array
@@ -119,15 +115,16 @@ useEffect(()=>{
   };
   let columns = [];
   columns.push({
-    title: "JavaScript Topics",
+    title: "Topics",
     dataIndex: "name",
     key: "name",
-    width: "45vw",
+    width: "30vw",
   });
   state.task.options.forEach((option, i) => {
     columns.push({
       title: option,
       key: option,
+      align: "center",
       render: (row) => {
         return (
           <input
@@ -148,7 +145,13 @@ useEffect(()=>{
   });
   return (
     <div>
+      <div className="backDiv">
+        <Button href="/student_main" className="backLink btn-lg rounded-lg">
+          Back To Modules
+        </Button>
+      </div>
       <h1>JavaScript</h1>
+      <HowToIntro />
       <Table
         columns={columns}
         dataSource={rowHeaders}
@@ -157,13 +160,19 @@ useEffect(()=>{
         pagination={false}
       />
       <br />
-      {JSON.stringify(state.selected)}
+      <Demo newAddingValue={getAverage(state.selected)} />
       <br />
-      <Button onClick={onSubmit} type="primary" id="submitBtn">
-        {" "}
-        Submit
-      </Button>
-     <Demo  newAddingValue = {getAverage(state.selected)}/>
+      <div className="subBut">
+        <Button
+          onClick={onSubmit}
+          type="primary"
+          id="submitBtn"
+          className="btn-lg rounded-lg"
+        >
+          {" "}
+          Submit
+        </Button>
+      </div>
     </div>
   );
 };
