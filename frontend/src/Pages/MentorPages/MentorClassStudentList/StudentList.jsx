@@ -25,7 +25,7 @@ const AllStudents = ({data}) =>{
   let history = useHistory()
   const handleClick =(e) =>{
     e.preventDefault()
-   // history.push("/classes")
+  // history.push("/classes")
   }
   return(
     <div className = "container">

@@ -13,6 +13,8 @@ import PostgreSQL from "./components/StudentComponents/Modules Components/Postgr
 import REACTJS from "./components/StudentComponents/Modules Components/REACTJS/REACTJS";
 import MentorRegionPage from './Pages/MentorPages/MentorRegion/MentorRegionPage';
 import MentorClassesPage from './Pages/MentorPages/MentorClassesPage/MentorClassesPage';
+//import StudentList from "./Pages/MentorPages/MentorClassStudentList/StudentList";
+import WestMidlandClasses from "./components/MentorComponents/Classes/WestMidlands Classes/WestMidlandClasses";
 import StudentList from "./Pages/MentorPages/MentorClassStudentList/StudentList";
 
 
@@ -54,15 +56,34 @@ function App({match}) {
 						<PrivateRoute path="/modules/ReactJS">
 						<REACTJS/>
 						</PrivateRoute>
+
 						<PrivateRoute path="/region">
 						<MentorRegionPage />
 						</PrivateRoute>
-						<PrivateRoute path="/region/classes">
-						<MentorClassesPage />
+                     
+					 
+					 	<PrivateRoute path="/regions/classes/West Midlands">
+		                  <WestMidlandClasses />
 						</PrivateRoute>
-						<PrivateRoute path="/region/classes/studentList">
+
+
+						<PrivateRoute path="/West Midlands/West Midlands Class 1/Students">
 						<StudentList />
 						</PrivateRoute>
+
+						<PrivateRoute path="/regions/classes/London">
+						<StudentList />
+						</PrivateRoute>
+
+						<PrivateRoute path="/regions/classes/Cape Town">
+						<StudentList />
+						</PrivateRoute>
+
+
+						
+
+
+	
 
 					</Switch>
 				</Container>

@@ -91,9 +91,9 @@ INSERT INTO mentor (name, email, password) VALUES ('Mentor three', 'mentorThree@
 
 INSERT INTO region (name, mentor_id) VALUES ('Cape Town', 1);
 INSERT INTO region (name, mentor_id) VALUES ('London', 1);
-INSERT INTO region (name, mentor_id) VALUES ('Nort West', 1);
+INSERT INTO region (name, mentor_id) VALUES ('North West', 1);
 INSERT INTO region (name, mentor_id) VALUES ('Roma', 1);
-INSERT INTO region (name, mentor_id) VALUES ('Scothland', 1);
+INSERT INTO region (name, mentor_id) VALUES ('Scotland', 1);
 INSERT INTO region (name, mentor_id) VALUES ('West Midlands', 1);
 
 
