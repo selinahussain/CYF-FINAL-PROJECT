@@ -1,59 +1,20 @@
 @import "../../Assets/styles/variables.scss";
 
-// h1 {
-// 	text-align: center;
-// }
 
-// .region {
-// 	color: $cyf-grey;
-// 	margin-top: 1rem;
-// }
-
-// .class-image {
-// 	max-width: 339px;
-// 	width: 100%;
-// 	max-height: 200px;
-// 	object-fit: cover;
-// }
-
-// .image-container {
-// 	margin-bottom: 7rem;
-// }
-
-// .classes-filter {
-//   display: block;
-
-//   .classes-input {
-//     max-width: 20rem;
-//     width: 100%;
-//     margin: 0 auto 4rem auto;
-//   }
-// }
-
-
-// @media (min-width: 768px) {
-// 	.classes-filter {
-//     margin: 0 auto;
-//     display: flex;
-//     justify-content: space-between;
-
-//     .classes-input {
-//       margin: 0 0 4rem 0;
-//     }
-
-//   }
-// }
-.main-contents{
-  display: flex;
-  margin: 0.2rem;
-  text-align: left;
-  & .sideBar{
-    //max-width: 20rem;
-  }
-  & .rightSide{
-    display: flex;
-    text-align: left;
-    //width: 70%;
     //padding: 2rem 5rem;
+=======
+h1 {
+	text-align: center;
+}
+
+p{
+	font-size: 1rem;
+}
+
+.progress_icon_container {
+  width: 100%;
+  & img {
+    height: 100%;
+    width: 100%;
   }
 }
