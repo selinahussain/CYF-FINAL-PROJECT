@@ -13,6 +13,7 @@ import PostgreSQL from "./components/StudentComponents/Modules Components/Postgr
 import REACTJS from "./components/StudentComponents/Modules Components/REACTJS/REACTJS";
 import MentorRegionPage from './Pages/MentorPages/MentorRegion/MentorRegionPage';
 import MentorClassesPage from './Pages/MentorPages/MentorClassesPage/MentorClassesPage';
+import StudentList from "./Pages/MentorPages/MentorClassStudentList/StudentList";
 
 
 
@@ -56,9 +57,13 @@ function App({match}) {
 						<PrivateRoute path="/region">
 						<MentorRegionPage />
 						</PrivateRoute>
-						<PrivateRoute path="/classes">
+						<PrivateRoute path="/region/classes">
 						<MentorClassesPage />
 						</PrivateRoute>
+						<PrivateRoute path="/region/classes/studentList">
+						<StudentList />
+						</PrivateRoute>
+
 					</Switch>
 				</Container>
 				<Footer />

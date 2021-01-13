@@ -5,6 +5,7 @@ import { Link, Route } from 'react-router-dom';
 import './mentorRegionPage.scss'
 import { useHistory } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
+import StudentList from '../MentorClassStudentList/StudentList';
 export default function MentorRegionPage() {
   let { status, data, error } = useFetch('http://localhost:3001/api/region');
   console.log('this is the data', data);
@@ -20,10 +21,11 @@ export default function MentorRegionPage() {
 const AllRegions = ({data}) =>{
   const [regions, setRegions] = useState(data)
   let history = useHistory()
-  const handleClick =(e) =>{
-    e.preventDefault()
-    history.push("/classes")
-  }
+
+  // const handleClick =(e) =>{
+  //   e.preventDefault()
+  //   history.push("/region/classes")
+  // }
   return(
     <div className = "container">
       <div className="heading">
@@ -34,11 +36,15 @@ const AllRegions = ({data}) =>{
         
         
         {regions.map(region => { return(
-          
+          <div>
           <div className={region.name}> 
-            <Button className="primary" onClick={handleClick}>{region.name} </Button>
-          </div>)
-          
+           <Link to = "/region/classes">{region.name} </Link> 
+          </div>
+          <div>
+          <Route path={`/region/classes/studentList`} component={StudentList} />
+        </div>
+        </div>
+        )
         })}
        
       </div> 
