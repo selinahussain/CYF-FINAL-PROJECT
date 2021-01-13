@@ -28,6 +28,8 @@ const SubjectList = ({ data }) => {
 
   return (
     <div>
+
+
       <div className="row">
         {subjects.map(({ name }) => (
           <div className= "moduleDiv">
@@ -37,7 +39,7 @@ const SubjectList = ({ data }) => {
                 <h2 className="">{name}</h2>
               </Link>
 
-              {/* <Progress type="circle" percent={100} width={60} /> */}
+
             </div>
             <div>
             <Route path={`/modules/${name}`} component={name} />
@@ -48,49 +50,3 @@ const SubjectList = ({ data }) => {
     </div>
   );
 };
-
-
-  {/* 
-<div>
-              <div className="text-center modules">
-                <Link to={`/modules/HTML_CSS`}><h2 className="">HTML_CSS</h2></Link>
-
-               <Demo newAddingValue={getAverage(20)}/>
-
-               </div>
-               <Route path={`/modules/HTML_CSS`} component={HTML_CSS} />
-             </div>
-             
-             <div>
-              <div className="text-center modules">
-                <Link to={`/modules/JavaScript`}><h2 className="">JavaScript</h2></Link>
-
-                <Progress type="circle" percent={100} width={60} />
-
-               </div>
-               <Route path={`/modules/JavaScript`} component={JavaScript} />
-             </div>
-
-             <div>
-              <div className="text-center modules">
-                <Link to={`/modules/NodeJS`}><h2 className="">NodeJS</h2></Link>
-
-                <Progress type="circle" percent={100} width={60} />
-
-               </div>
-               <Route path={`/modules/NodeJS`} component={NodeJS} />
-             </div>
-
-             <div>
-              <div className="text-center modules">
-                <Link to={`/modules/PostgreSQL`}><h2 className="">PostgreSQL</h2></Link>
-
-                <Progress type="circle" percent={100} width={60} />
-
-               </div>
-               <Route path={`/modules/PostgreSQL`} component={PostgreSQL} />
-             </div>
-
-             
-      </div> */
-}

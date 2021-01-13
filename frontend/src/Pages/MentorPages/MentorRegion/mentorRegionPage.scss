@@ -1,0 +1,46 @@
+.container{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  & .all-regions{
+    display: flex;
+    
+    flex-wrap: wrap;
+    & div{
+      display: flex;
+      justify-content: center;
+    align-content: flex-end;
+    align-items: flex-end;
+      background-color: #c4c4c4;
+      width: 20rem;
+      height: 15rem;
+      padding: 1rem;
+      margin: 1rem;
+    }
+    
+    & .West{
+      background-image: url(../../../Assets/images/westmidlands.jpg);
+      background-size: 20rem;
+    }
+    & .London{
+      background-image: url(../../../Assets/images/london.jpg);
+      background-size: 20rem;
+    }
+    & .North{
+      background-image: url(../../../Assets/images/NorthWest.jpg);
+      background-size: 20rem;
+    }
+    & .Scotland{
+      background-image: url(../../../Assets/images/scothland.jpg);
+      background-size: 20rem;
+    }
+    & .Roma{
+      background-image: url(../../../Assets/images/Rome.jpg);
+      background-size: 20rem;
+    }
+    & .Cape{
+      background-image: url("https://codeyourfuture.io/wp-content/uploads/2020/08/CapeTown.png");
+      background-size: 20rem;
+    }
+  }
+}

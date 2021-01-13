@@ -42,18 +42,7 @@ router.get('/subjects', function (req, res) {
 });
 
 
-router.get('/classes', function (req, res) {
-  let selectCohorts = `SELECT * FROM  cohort `;
-  pool.query(selectCohorts, (err, results) => {
-    if (err) {
-      throw err;
-    }
 
-    if (results.rows.length > 0) {
-      res.json(results.rows);
-    }
-  });
-});
 
 router.get('/Modules/HTML_CSS/Topics', function (req, res) {
   let selectHTMLTopics = `SELECT topic_id, name FROM topic WHERE subject_name = 'HTML_CSS'; `;
@@ -81,7 +70,7 @@ router.get('/Modules/JavaScript/Topics', function (req, res) {
   });
 });
 
-router.get('/Modules/Git-GitHub/Topics', function (req, res) {
+router.get('/Modules/Git_GitHub/Topics', function (req, res) {
   let selectGitGitHubTopics = `SELECT topic_id,name FROM topic WHERE subject_name = 'Git_GitHub'; `;
   pool.query(selectGitGitHubTopics, (err, results) => {
     if (err) {
@@ -173,6 +162,69 @@ console.log(query);
 });
 
 
+router.get('/region', function (req, res) {
+  let selectCohorts = `select * from region ORDER BY region_id; `;
+  pool.query(selectCohorts, (err, results) => {
+    if (err) {
+      throw err;
+    }
+
+    if (results.rows.length > 0) {
+      res.json(results.rows);
+    }
+  });
+});
+
+router.get('/region/classes', function (req, res) {
+  let selectCohorts = `select * from cohort`;
+  pool.query(selectCohorts, (err, results) => {
+    if (err) {
+      throw err;
+    }
+
+    if (results.rows.length > 0) {
+      res.json(results.rows);
+    }
+  });
+});
+router.get('/region/classes/studentList', function (req, res) {
+  let selectCohorts = `select * from users WHERE NOT id=5 `;
+  pool.query(selectCohorts, (err, results) => {
+    if (err) {
+      throw err;
+    }
+
+    if (results.rows.length > 0) {
+      res.json(results.rows);
+    }
+  });
+});
 
 
 module.exports = router;
+
+
+
+
+
+// router.post('/users/:userid/add-grade', (req, res) => {
+//   let data = req.body;
+//   let userId= req.params.userid;
+//   console.log(data);
+//   let query = 'insert into grade (vote,topic_id,users_id) VALUES' 
+//   let values = data.map(x => {
+//       return `(${x.vote}, ${x.topic_id},${userId})`
+//   }).join(',');
+//    query += values;
+  
+// console.log(query);
+//   pool.query(
+//     query,
+//     (err, results) => {
+//       if (err) {
+//         throw err;
+//       }
+//       res.send('successful');
+//     }
+//   );
+// });

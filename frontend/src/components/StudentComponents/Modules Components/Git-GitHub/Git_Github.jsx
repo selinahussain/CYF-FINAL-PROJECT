@@ -1,17 +1,29 @@
 import React, { useState, useEffect } from "react";
 import useFetch from "../../../../Auth/useFetch";
 import Spinner from "../../../UI/Spinner";
+<<<<<<< HEAD
 import { Table, Button, Tag } from "antd";
 import "antd/dist/antd.css";
+=======
+import {Table, Button} from 'antd'
+import 'antd/dist/antd.css'
+>>>>>>> 575278345652b742e3ace330c7a7aa9e1b833277
 import "./Git_GitHub.scss";
 import { Demo, getAverage } from "../JavaScript/JavaScript";
 import { useAuth } from "../../../../Auth/use-auth";
+<<<<<<< HEAD
 import HowToIntro from "../../../StudentComponents/HowToIntro";
 
 export default function Git_GitHub() {
   let { status, data, error } = useFetch(
     "http://localhost:3001/api/Modules/Git-GitHub/Topics"
   );
+=======
+
+export default function Git_GitHub() {
+  let { status, data, error } = useFetch('http://localhost:3001/api/Modules/Git_GitHub/Topics');
+
+>>>>>>> 575278345652b742e3ace330c7a7aa9e1b833277
 
   const auth = useAuth();
 
@@ -52,7 +64,13 @@ const styling = {
   "stroke-width": 9,
 };
 
+<<<<<<< HEAD
 const GitTopicList = ({ data, gradeData }) => {
+=======
+
+const GitTopicList = ({ data,gradeData }) => {
+
+>>>>>>> 575278345652b742e3ace330c7a7aa9e1b833277
   console.log("this the data", data);
   const tableHeaders = [20, 40, 60, 80, 100];
   const auth = useAuth();
@@ -107,6 +125,7 @@ const GitTopicList = ({ data, gradeData }) => {
       key: option,
       align: "center",
       render: (row) => {
+        
         return (
           <input
             type="radio"
@@ -115,6 +134,7 @@ const GitTopicList = ({ data, gradeData }) => {
             name={row.name}
             id={row.id}
             value={option}
+            
           />
         );
       },

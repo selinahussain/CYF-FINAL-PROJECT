@@ -48,8 +48,15 @@ export default function PostgreSQL() {
   }
 }
 
+<<<<<<< HEAD
 const PostgreSqlTopicList = ({ data, gradeData }) => {
   console.log("this the data", data);
+=======
+
+const PostgreSqlTopicList = ({ data,gradeData  }) => {
+
+  //console.log("this the data", data);
+>>>>>>> 575278345652b742e3ace330c7a7aa9e1b833277
   const tableHeaders = [20, 40, 60, 80, 100];
   const auth = useAuth();
   const [state, setState] = useState({
@@ -57,7 +64,7 @@ const PostgreSqlTopicList = ({ data, gradeData }) => {
     selected: gradeData,
   });
   const onRadioChange = (e) => {
-    console.log(e.currentTarget);
+    
     let name = e.currentTarget.id;
     let value = e.currentTarget.value;
     setState({
