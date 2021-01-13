@@ -1,63 +1,55 @@
-import React , {useState,useEffect} from 'react';
+import React, { useState, useEffect } from "react";
 import useFetch from "../../../../Auth/useFetch";
 import Spinner from "../../../UI/Spinner";
-import {Table, Button, Tag} from 'antd'
-import 'antd/dist/antd.css'
+import { Table, Button, Tag } from "antd";
+import "antd/dist/antd.css";
 import "./NodeJS.scss";
-import {Demo, getAverage} from "../JavaScript/JavaScript"
+import { Demo, getAverage } from "../JavaScript/JavaScript";
 import { useAuth } from "../../../../Auth/use-auth";
-
-
-
-
+import HowToIntro from "../../../StudentComponents/HowToIntro";
 
 export default function NodeJS() {
-  let { status, data, error } = useFetch('http://localhost:3001/api/Modules/NodeJS/Topics');
+  let { status, data, error } = useFetch(
+    "http://localhost:3001/api/Modules/NodeJS/Topics"
+  );
   console.log(data);
   const auth = useAuth();
 
-  const [grade,setGrade] = useState({})
- 
- 
- 
-  let { status:gradeStatus, data:gradeData, error:gradeError } = useFetch(
-   `http://localhost:3001/api/Modules/Users/${auth.user.id}/GetGrade`
- );
- 
- useEffect(() => {
-  if(!gradeData || !data){
-     return 
-  }
-  let topicId = data.map(x=>x.topic_id)
- 
-  let tempGradeData = {}
-  gradeData.forEach((item)=>{
-    if(topicId.includes(item.topic_id)){
-     tempGradeData[item.topic_id]=item.vote;
+  const [grade, setGrade] = useState({});
+
+  let { status: gradeStatus, data: gradeData, error: gradeError } = useFetch(
+    `http://localhost:3001/api/Modules/Users/${auth.user.id}/GetGrade`
+  );
+
+  useEffect(() => {
+    if (!gradeData || !data) {
+      return;
     }
-    
-  })
- setGrade(tempGradeData);
-  
- }, [gradeData,data])
- 
- 
- console.log(gradeData);
-  if (status === 'error') {
+    let topicId = data.map((x) => x.topic_id);
+
+    let tempGradeData = {};
+    gradeData.forEach((item) => {
+      if (topicId.includes(item.topic_id)) {
+        tempGradeData[item.topic_id] = item.vote;
+      }
+    });
+    setGrade(tempGradeData);
+  }, [gradeData, data]);
+
+  console.log(gradeData);
+  if (status === "error") {
     return <div>Error: {error.message}</div>;
-  } else if (status === 'success') {
-    return <NodeJsTopicList data={data} gradeData = {grade} />;
+  } else if (status === "success") {
+    return <NodeJsTopicList data={data} gradeData={grade} />;
   } else {
     return <Spinner />;
   }
-
 }
 
-
-const NodeJsTopicList = ({ data ,gradeData }) => {
+const NodeJsTopicList = ({ data, gradeData }) => {
   console.log("this the data", data);
   const tableHeaders = [20, 40, 60, 80, 100];
-  const auth = useAuth()
+  const auth = useAuth();
   const [state, setState] = useState({
     task: { options: tableHeaders, extras: data },
     selected: gradeData,
@@ -72,9 +64,9 @@ const NodeJsTopicList = ({ data ,gradeData }) => {
     });
   };
 
-  useEffect(()=>{
-    setState({...state,selected:gradeData})
-  },[gradeData])
+  useEffect(() => {
+    setState({ ...state, selected: gradeData });
+  }, [gradeData]);
 
   const onSubmit = () => {
     // convert TO array
@@ -98,15 +90,16 @@ const NodeJsTopicList = ({ data ,gradeData }) => {
   };
   let columns = [];
   columns.push({
-    title: "NodeJS Topics",
+    title: "Topics",
     dataIndex: "name",
     key: "name",
-    width: "45vw",
+    width: "30vw",
   });
   state.task.options.forEach((option, i) => {
     columns.push({
       title: option,
       key: option,
+      align: "center",
       render: (row) => {
         return (
           <input
@@ -127,6 +120,13 @@ const NodeJsTopicList = ({ data ,gradeData }) => {
   });
   return (
     <div>
+      <div className="backDiv">
+        <Button href="/student_main" className="backLink btn-lg rounded-lg">
+          Back To Modules
+        </Button>
+      </div>
+      <h1>NodeJS</h1>
+      <HowToIntro />
       <Table
         columns={columns}
         dataSource={rowHeaders}
@@ -134,15 +134,20 @@ const NodeJsTopicList = ({ data ,gradeData }) => {
         bordered
         pagination={false}
       />
-      {/* <Tag color="red">Selected options</Tag> */}
       <br />
-      {JSON.stringify(state.selected)}
+      <Demo newAddingValue={getAverage(state.selected)} />
       <br />
-      <Button onClick={onSubmit} type="primary">
-        {" "}
-        Submit
-      </Button>
-      <Demo newAddingValue={getAverage(state.selected)}/>
+      <div className="subBut">
+        <Button
+          onClick={onSubmit}
+          type="primary"
+          id="submitBtn"
+          className="btn-lg rounded-lg"
+        >
+          {" "}
+          Submit
+        </Button>
+      </div>
     </div>
   );
 };

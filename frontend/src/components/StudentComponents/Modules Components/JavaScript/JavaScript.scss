@@ -1,4 +1,21 @@
-#submitBtn{
-    display: flex;
-    justify-content: flex-end;
+.subBut {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 3rem;
+}
+
+.backDiv {
+  margin-bottom: 1.5rem;
+}
+
+.backLink, #submitBtn {
+  background-color: #d12e2f;
+  color: #fff;
+  
+  text-transform: uppercase;
+}
+
+.backLink:hover, #submitBtn:hover {
+  background-color: #f3c9ca;
+  color:#000
 }
