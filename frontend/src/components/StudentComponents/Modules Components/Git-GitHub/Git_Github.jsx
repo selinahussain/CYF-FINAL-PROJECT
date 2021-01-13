@@ -57,7 +57,7 @@ export default function Git_GitHub() {
 const GitTopicList = ({ data,gradeData }) => {
 
   console.log("this the data", data);
-  const tableHeaders = ['20%', '40%', '60%', '80%', '100%'];
+  const tableHeaders = [20, 40, 60, 80, 100];
   const auth = useAuth()
   const [state, setState] = useState({
     task: { options: tableHeaders, extras: data },
