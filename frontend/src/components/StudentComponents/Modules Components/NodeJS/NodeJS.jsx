@@ -93,11 +93,7 @@ const NodeJsTopicList = ({ data, gradeData }) => {
     title: "Topics",
     dataIndex: "name",
     key: "name",
-<<<<<<< HEAD
     width: "30vw",
-=======
-    width: "25vw",
->>>>>>> 575278345652b742e3ace330c7a7aa9e1b833277
   });
   state.task.options.forEach((option, i) => {
     columns.push({

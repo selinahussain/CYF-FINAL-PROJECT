@@ -1,11 +1,4 @@
-<<<<<<< HEAD
 import React, { useState, useEffect } from "react";
-=======
-
-
-import React, { useState,useEffect} from "react";
-
->>>>>>> 575278345652b742e3ace330c7a7aa9e1b833277
 import useFetch from "../../../../Auth/useFetch";
 import Spinner from "../../../UI/Spinner";
 import { Table, Button } from "antd";
