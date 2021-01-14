@@ -10,9 +10,9 @@ import HowToIntro from "../../../StudentComponents/HowToIntro";
 
 export default function Git_GitHub() {
   let { status, data, error } = useFetch(
-    "http://localhost:3001/api/Modules/Git-GitHub/Topics"
+    "http://localhost:3001/api/Modules/Git_GitHub/Topics"
   );
-
+ console.log(data);
   const auth = useAuth();
 
   const [grade, setGrade] = useState({});

@@ -9,6 +9,7 @@ import { Link,Route} from 'react-router-dom';
 import useFetch from '../../../../Auth/useFetch';
 import StudentList from '../../../../Pages/MentorPages/MentorClassStudentList/StudentList';
 import Spinner from '../../../UI/Spinner';
+import ComingSoon from '../../Regions/ComingSoon';
 //import './MentorRegions.scss';
 
 const WestMidlandClasses = () => {
@@ -46,7 +47,7 @@ const ClassList = ({ data }) => {
       </div>
       <div>
             <Route path={`/West Midlands/West Midlands Class 1/Students`} component={StudentList} />
-           
+            <Route path={`/West Midlands/West Midlands Class 2/Students`} component={ComingSoon} />
           </div>
     </div>
   );
