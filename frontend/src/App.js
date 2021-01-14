@@ -16,6 +16,7 @@ import MentorClassesPage from './Pages/MentorPages/MentorClassesPage/MentorClass
 //import StudentList from "./Pages/MentorPages/MentorClassStudentList/StudentList";
 import WestMidlandClasses from "./components/MentorComponents/Classes/WestMidlands Classes/WestMidlandClasses";
 import StudentList from "./Pages/MentorPages/MentorClassStudentList/StudentList";
+import ComingSoon from "./components/MentorComponents/Regions/ComingSoon";
 
 
 
@@ -71,15 +72,30 @@ function App({match}) {
 						<StudentList />
 						</PrivateRoute>
 
+
+						<PrivateRoute path="/West Midlands/West Midlands Class 2/Students">
+						<ComingSoon/>
+						</PrivateRoute>
+
 						<PrivateRoute path="/regions/classes/London">
-						<StudentList />
+						<ComingSoon />
 						</PrivateRoute>
 
 						<PrivateRoute path="/regions/classes/Cape Town">
-						<StudentList />
+						<ComingSoon />
 						</PrivateRoute>
 
+						<PrivateRoute path="/regions/classes/North West">
+						<ComingSoon />
+						</PrivateRoute>
 
+						<PrivateRoute path="/regions/classes/Roma">
+						<ComingSoon />
+						</PrivateRoute>
+
+						<PrivateRoute path="/regions/classes/Scotland">
+						<ComingSoon />
+						</PrivateRoute>
 						
 
 

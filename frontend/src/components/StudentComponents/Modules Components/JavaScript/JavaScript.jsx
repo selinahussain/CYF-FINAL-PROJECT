@@ -64,7 +64,7 @@ export const Demo = ({ newAddingValue }) => {
           from: "#d12f2f",
           to: "#87d068",
         }}
-        strokeWidth="15px"
+        strokeWidth="20px"
         percent={newAddingValue}
         status="active"
       />
