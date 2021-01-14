@@ -98,10 +98,11 @@ function App({match}) {
 						<ComingSoon />
 						</PrivateRoute>
 						
-						<PrivateRoute path="students/4">
+
+						<PrivateRoute path="/students/:id">
 						<MentorIndividualGradeList/>
 						</PrivateRoute>
-						
+			
 
 
 	
