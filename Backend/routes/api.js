@@ -191,8 +191,16 @@ router.post('/users/:userid/add-grade', (req, res) => {
 
 
 
-router.get('/getStudentsAllGrade', function (req, res) {
-  let selectCohorts = ` SELECT ROUND(AVG(vote))  FROM grade WHERE users_id = 4 `;
+router.get('/student/:userid/getStudentGrade', function (req, res) {
+
+ let userId = req.params.userid
+
+  let selectCohorts = `SELECT ROUND(AVG(vote)), t.subject_name
+  FROM grade g
+  JOIN topic t on t.topic_id = g.topic_id 
+  WHERE users_id = ${userId}
+  GROUP BY t.subject_name;`;
+  console.log(selectCohorts);
   pool.query(selectCohorts, (err, results) => {
     if (err) {
       throw err;
@@ -203,6 +211,11 @@ router.get('/getStudentsAllGrade', function (req, res) {
     }
   });
 });
+
+
+
+
+
 
 
 router.get('/region', function (req, res) {
@@ -231,7 +244,7 @@ router.get('/region/classes', function (req, res) {
   });
 });
 router.get('/region/classes/studentList', function (req, res) {
-  let selectCohorts = `select * from users WHERE NOT id=5 `;
+  let selectCohorts = `select * from users WHERE NOT id=1 `;
   pool.query(selectCohorts, (err, results) => {
     if (err) {
       throw err;

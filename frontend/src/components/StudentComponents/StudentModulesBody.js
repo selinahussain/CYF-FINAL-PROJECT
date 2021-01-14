@@ -42,7 +42,7 @@ const SubjectList = ({ data }) => {
 
             </div>
             <div>
-            <Route path={`/modules/${name}`} component={name} />
+            {/* <Route path={`/modules/${name}`} component={name} /> */}
           </div>
           </div>
         ))}
