@@ -17,6 +17,7 @@ import MentorClassesPage from './Pages/MentorPages/MentorClassesPage/MentorClass
 import WestMidlandClasses from "./components/MentorComponents/Classes/WestMidlands Classes/WestMidlandClasses";
 import StudentList from "./Pages/MentorPages/MentorClassStudentList/StudentList";
 import ComingSoon from "./components/MentorComponents/Regions/ComingSoon";
+import MentorIndividualGradeList from "./Pages/MentorPages/MentorIndividualGradeList/MentorIndividualGradeList";
 
 
 
@@ -97,6 +98,11 @@ function App({match}) {
 						<ComingSoon />
 						</PrivateRoute>
 						
+
+						<PrivateRoute path="/students/:id">
+						<MentorIndividualGradeList/>
+						</PrivateRoute>
+			
 
 
 	
