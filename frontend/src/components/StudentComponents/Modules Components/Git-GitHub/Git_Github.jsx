@@ -1,13 +1,8 @@
 import React, { useState, useEffect } from "react";
 import useFetch from "../../../../Auth/useFetch";
 import Spinner from "../../../UI/Spinner";
-<<<<<<< HEAD
 import { Table, Button, Tag } from "antd";
 import "antd/dist/antd.css";
-=======
-import {Table, Button} from 'antd';
-import 'antd/dist/antd.css'
->>>>>>> d2a75993a8e53d3af74bed4224e8250f24027b13
 import "./Git_GitHub.scss";
 import { Demo, getAverage } from "../JavaScript/JavaScript";
 import { useAuth } from "../../../../Auth/use-auth";
@@ -17,11 +12,7 @@ export default function Git_GitHub() {
   let { status, data, error } = useFetch(
     "http://localhost:3001/api/Modules/Git_GitHub/Topics"
   );
-<<<<<<< HEAD
-
-=======
  console.log(data);
->>>>>>> d2a75993a8e53d3af74bed4224e8250f24027b13
   const auth = useAuth();
 
   const [grade, setGrade] = useState({});
