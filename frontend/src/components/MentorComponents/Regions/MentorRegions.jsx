@@ -12,6 +12,7 @@ import CapeTown from '../../../Assets/images/CapeTown.png';
 import fallbackImage from '../.../../../../Assets/images/inprogress.png';
 import StudentList from '../../../Pages/MentorPages/MentorClassStudentList/StudentList';
 import WestMidlandClasses from '../Classes/WestMidlands Classes/WestMidlandClasses';
+import ComingSoon from './ComingSoon';
 
 const MentorRegions = () => {
   let { status, data, error } = useFetch('http://localhost:3001/api/region');
@@ -69,8 +70,11 @@ const RegionList = ({ data }) => {
       </div>
           <div>
             <Route path={`/regions/classes/West Midlands`} component={WestMidlandClasses} />
-            <Route path={`/regions/classes/Cape Town`} component={StudentList} />
-            <Route path={`/regions/classes/London`} component={StudentList} />
+            <Route path={`/regions/classes/Cape Town`} component={ComingSoon} />
+            <Route path={`/regions/classes/London`} component={ComingSoon} />
+            <Route path={`/regions/classes/North West`} component={ComingSoon} />
+            <Route path={`/regions/classes/Roma`} component={ComingSoon} />
+            <Route path={`/regions/classes/Scotland`} component={ComingSoon} />
           </div>
     </div>
   );

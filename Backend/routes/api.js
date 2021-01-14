@@ -139,26 +139,69 @@ router.get('/Modules/Users/:userid/GetGrade', function (req, res) {
 
 
 
+
+
+
+
+
 router.post('/users/:userid/add-grade', (req, res) => {
-  let data = req.body;
-  let userId= req.params.userid;
-  console.log(data);
-  let query = 'insert into grade (vote,topic_id,users_id) VALUES' 
-  let values = data.map(x => {
-      return `(${x.vote}, ${x.topic_id},${userId})`
-  }).join(',');
-   query += values;
-  
-console.log(query);
-  pool.query(
-    query,
-    (err, results) => {
-      if (err) {
-        throw err;
-      }
-      res.send('successful');
+	let data = req.body;
+	let userId= req.params.userid;
+	// iterate through the data
+	for (let i = 0; i < data.length; i++) {
+		let record = data[i];
+		// check if the item already exists in the database
+		let query = `SELECT * FROM grade WHERE topic_id = ${record.topic_id} AND users_id = ${userId}`;
+		pool.query(
+			query,
+			(err, results) => {
+				if (err) {
+					throw err;
+				}
+				if (results.rowCount > 0) { // TODO check this is actually valid javascript
+					// if it does exist, update it
+					query = `UPDATE grade SET vote = ${record.vote} WHERE topic_id = ${record.topic_id} AND users_id = ${userId} `;
+					pool.query(
+						query,
+						(err, results) => {
+							if (err) {
+								throw err;
+							}
+						});
+				} else {
+					// if it does not exist, add a new record
+					query = `INSERT INTO grade (vote,topic_id,users_id) VALUES (${record.vote}, ${record.topic_id},${userId})`;
+					pool.query(
+						query,
+						(err, results) => {
+							if (err) {
+								throw err;
+							}
+						});
+				}
+			});
+	}
+	// return sucess
+	res.send('successful');
+});
+
+
+
+
+
+
+
+router.get('/getStudentsAllGrade', function (req, res) {
+  let selectCohorts = ` SELECT ROUND(AVG(vote))  FROM grade WHERE users_id = 4 `;
+  pool.query(selectCohorts, (err, results) => {
+    if (err) {
+      throw err;
     }
-  );
+
+    if (results.rows.length > 0) {
+      res.json(results.rows);
+    }
+  });
 });
 
 

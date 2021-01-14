@@ -1,16 +1,18 @@
 import React, {useState} from 'react'
 import useFetch from '../../../Auth/useFetch';
 import Spinner from '../../../components/UI/Spinner'
-import { Link, Route } from 'react-router-dom';
+
 import './StudentList.scss'
 import { useHistory } from 'react-router-dom';
-import { Button } from 'react-bootstrap';
+
+import { Progress } from "antd";
+import "antd/dist/antd.css";
+
 
 
 
 export default function StudentList() {
   let { status, data, error } = useFetch('http://localhost:3001/api/region/classes/studentList');
-  console.log('this is the data', data);
   if (status === 'error') {
     return <div>Error: {error.message}</div>;
   } else if (status === 'success') {
@@ -19,6 +21,49 @@ export default function StudentList() {
     return <Spinner />;
   }
 }
+
+
+export const Demo = () => {
+  return (
+    <div>
+
+<Progress
+      type="circle"
+      strokeColor={{
+        '0%': '#108ee9',
+        '100%': '#87d068',
+      }}
+      percent={20}
+    />
+      {/* <Progress
+        strokeColor={{
+          from: "#d12f2f",
+          to: "#87d068",
+        }}
+        strokeWidth="20px"
+        percent={20}
+        status="active"
+      /> */}
+    </div>
+  );
+};
+
+
+
+
+export function GetAvg() {
+  let { status, data, error } = useFetch('http://localhost:3001/api/getStudentsAllGrade');
+
+  const [avg,setAvg] = useState(data)
+  console.log(avg)
+  return (
+    <div>
+      <h2> hello I am average of Marcin :</h2>
+    </div>
+  )
+}
+
+
 
 const AllStudents = ({data}) =>{
   const [students, setStudents] = useState(data)
@@ -38,13 +83,21 @@ const AllStudents = ({data}) =>{
         
         {students.map(student => { return(
           
-          <div className={student.name}> 
-            <Button className="primary" onClick={handleClick}>{student.name} </Button>
+          <div className={student.name} > 
+          <h1>{student.name} </h1>
+          <span>{student.id}</span>
           </div>)
           
         })}
        
       </div> 
+      <GetAvg />
+      <Demo />
+      <Demo />
+      <Demo />
+      <Demo />
+      <Demo />
+      <Demo />
     </div>
   )
 }
