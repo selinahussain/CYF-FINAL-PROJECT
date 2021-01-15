@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import useFetch from "../../../../Auth/useFetch";
 import Spinner from "../../../UI/Spinner";
-import {Table, Button} from 'antd';
-import 'antd/dist/antd.css'
+import { Table, Button, Tag } from "antd";
+import "antd/dist/antd.css";
 import "./Git_GitHub.scss";
 import { Demo, getAverage } from "../JavaScript/JavaScript";
 import { useAuth } from "../../../../Auth/use-auth";
