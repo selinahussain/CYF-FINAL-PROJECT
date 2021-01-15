@@ -17,7 +17,7 @@ const corsOptions = {
 
 initializePassport (passport);
 
-app.use (cors());
+app.use (cors(corsOptions));
 
 app.use (passport.initialize ());
 app.use (express.json ());
