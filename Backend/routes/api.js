@@ -259,28 +259,3 @@ router.get('/region/classes/studentList', function (req, res) {
 
 module.exports = router;
 
-
-
-
-
-// router.post('/users/:userid/add-grade', (req, res) => {
-//   let data = req.body;
-//   let userId= req.params.userid;
-//   console.log(data);
-//   let query = 'insert into grade (vote,topic_id,users_id) VALUES' 
-//   let values = data.map(x => {
-//       return `(${x.vote}, ${x.topic_id},${userId})`
-//   }).join(',');
-//    query += values;
-  
-// console.log(query);
-//   pool.query(
-//     query,
-//     (err, results) => {
-//       if (err) {
-//         throw err;
-//       }
-//       res.send('successful');
-//     }
-//   );
-// });
