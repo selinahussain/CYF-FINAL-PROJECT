@@ -19,7 +19,7 @@ const RegisterPage = () => {
       data.password,
       data.confirmPassword,
       () => {
-        history.replace({ pathname: "/student_main" });
+        auth.signout(() => history.push('/'));
       }
     );
     console.log(data);
