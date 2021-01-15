@@ -7,13 +7,11 @@ const { pool } = require('../db/dbConfig');
 const router = express.Router();
 
 router.get('/authenticated', (req, res) => {
-  console.log('/authenticated called');
   const { id, name } = req.user;
   res.json({ success: true, data: { user: { id, name } } });
 });
 
 router.get('/notAuthenticated', (req, res) => {
-  console.log('/notAuthenticated called');
   res.status(401).send('notAuthenticated');
 });
 
@@ -25,7 +23,6 @@ router.post(
   (req, res) => {
     // if reached here - password valid
     const { name,id } = req.user;
-    console.log(req.user);
     // generate and send token to frontend
     const token = jwt.sign({ email: req.user.email }, 'jwt_secret');
     res.json({ token: token, user: { name,id } });

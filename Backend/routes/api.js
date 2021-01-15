@@ -13,20 +13,6 @@ router.use(
 );
 
 
-router.get('/topic', function (req, res) {
-  let selectModules = `SELECT * FROM topic`; //modify this line
-  pool.query(selectModules, (err, results) => {
-    if (err) {
-      res.json(null);
-      throw err;
-    }
-
-    if (results.rows.length > 0) {
-      res.json(results.rows);
-    }
-  });
-});
-
 
 router.get('/subjects', function (req, res) {
   let selectCohorts = `SELECT * FROM  subject `;
@@ -201,7 +187,6 @@ router.get('/student/:userid/getStudentGrade', function (req, res) {
   JOIN users u on u.id = g.users_id
   WHERE users_id = ${userId}
   GROUP BY t.subject_name, u.name;`;
-  console.log(selectCohorts);
   pool.query(selectCohorts, (err, results) => {
     if (err) {
       throw err;
