@@ -43,7 +43,7 @@ const AllStudents = ({ data }) => {
         <div className="row">
           <div className="col-1">
             <Button
-              href="/regions/classes/West%20Midlands"
+              href="/West%20Midlands/West%20Midlands%20Class%201/Students"
               className="backLink btn-lg rounded-lg"
             >
               Back To Classes
