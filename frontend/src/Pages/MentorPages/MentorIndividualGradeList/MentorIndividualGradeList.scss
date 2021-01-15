@@ -1,0 +1,15 @@
+
+.individualGrade{
+  display: flex;
+  flex-direction: row;
+  background-color: #efefef;
+  padding: 1rem;
+  margin: 1rem;
+  & h3{
+    display: flex;
+    flex: 1;
+    align-items: center;
+    align-content: center;
+  }
+  
+}

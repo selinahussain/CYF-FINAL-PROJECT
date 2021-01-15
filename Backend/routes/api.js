@@ -195,11 +195,12 @@ router.get('/student/:userid/getStudentGrade', function (req, res) {
 
  let userId = req.params.userid
 
-  let selectCohorts = `SELECT ROUND(AVG(vote)), t.subject_name
+  let selectCohorts = `SELECT ROUND(AVG(vote)), t.subject_name, u.name 
   FROM grade g
   JOIN topic t on t.topic_id = g.topic_id 
+  JOIN users u on u.id = g.users_id
   WHERE users_id = ${userId}
-  GROUP BY t.subject_name;`;
+  GROUP BY t.subject_name, u.name;`;
   console.log(selectCohorts);
   pool.query(selectCohorts, (err, results) => {
     if (err) {
