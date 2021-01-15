@@ -137,4 +137,4 @@ INSERT INTO topic (name, subject_name) VALUES ('Be able to update state','REACTJ
 INSERT INTO topic (name, subject_name) VALUES ('Understand what hooks are','REACTJS');
 
 
-
+INSERT INTO users (name, email, password) VALUES('Mentor','mentor@gmail.com', '$2b$10$h5h0vlMiM.sdQQ43V2NB4.cEJVGu9zptzOQjfRn24MX3iXZMbyrd.');

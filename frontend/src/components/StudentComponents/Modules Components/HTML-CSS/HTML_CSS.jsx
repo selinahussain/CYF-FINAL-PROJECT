@@ -8,7 +8,7 @@ import { Demo, getAverage } from "../JavaScript/JavaScript";
 import { useAuth } from "../../../../Auth/use-auth";
 import HowToIntro from "../../../StudentComponents/HowToIntro";
 
-export default function HTML_CSS() {
+export default function HTML_CSS(e) {
   let { status, data, error } = useFetch(
     "http://localhost:3001/api/Modules/HTML_CSS/Topics"
   );
