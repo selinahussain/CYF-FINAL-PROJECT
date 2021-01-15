@@ -10,7 +10,7 @@
     "dev:backend": "npm --prefix ./backend run dev",
     "dev:frontend": "npm --prefix ./frontend start",
     "repopulate-db:local": "dropdb --if-exists cyf_student_tracker && createdb cyf_student_tracker && psql -d cyf_student_tracker -f ./backend/db/final_cyf_fake_data.sql",
-    "start": "npm start"
+    "start": " nodemon server.js"
   },
   "author": "Team 404 Not Found",
   "license": "ISC",
