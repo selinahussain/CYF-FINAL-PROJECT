@@ -19,7 +19,7 @@ export default function MentorIndividualGradeList () {
   let { id } = useParams();
 
 
-  let { status, data, error } = useFetch(`http://localhost:3001/api/student/${id}/getStudentGrade`);
+  let { status, data, error } = useFetch(`${process.env.REACT_APP_URL}/api/student/${id}/getStudentGrade`);
   console.log(("indiv stu", data));
   
   if (status === 'error') {

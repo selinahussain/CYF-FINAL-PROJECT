@@ -10,7 +10,7 @@ import HowToIntro from "../../../StudentComponents/HowToIntro";
 
 export default function JavaScript() {
   let { status, data, error } = useFetch(
-    "http://localhost:3001/api/Modules/JavaScript/Topics"
+    `${process.env.REACT_APP_URL}/api/Modules/JavaScript/Topics`
   );
   console.log(data);
   const auth = useAuth();
@@ -18,7 +18,7 @@ export default function JavaScript() {
   const [grade, setGrade] = useState({});
 
   let { status: gradeStatus, data: gradeData, error: gradeError } = useFetch(
-    `http://localhost:3001/api/Modules/Users/${auth.user.id}/GetGrade`
+    `${process.env.REACT_APP_URL}/api/Modules/Users/${auth.user.id}/GetGrade`
   );
 
   useEffect(() => {
@@ -102,7 +102,7 @@ const JavaScriptTopicList = ({ data, gradeData }) => {
         vote: value,
       });
     }
-    fetch(`http://localhost:3001/api/users/${auth.user.id}/add-grade`, {
+    fetch(`${process.env.REACT_APP_URL}/api/users/${auth.user.id}/add-grade`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

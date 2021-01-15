@@ -12,7 +12,7 @@ import "./StudentModulesBody.scss";
 //import {Demo,getAverage,} from "../StudentComponents/Modules Components/JavaScript/JavaScript";
 
 export default function StudentModulesBody() {
-  let { status, data, error } = useFetch("http://localhost:3001/api/subjects");
+  let { status, data, error } = useFetch(`${process.env.REACT_APP_URL}/api/subjects`);
 
   if (status === "error") {
     return <div>Error: {error.message}</div>;

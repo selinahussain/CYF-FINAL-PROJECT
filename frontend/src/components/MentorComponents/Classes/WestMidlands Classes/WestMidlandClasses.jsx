@@ -12,7 +12,7 @@ import "./WestMidlandClasses.scss";
 
 const WestMidlandClasses = () => {
   let { status, data, error } = useFetch(
-    "http://localhost:3001/api/region/classes"
+    `${process.env.REACT_APP_URL}/api/region/classes`
   );
   console.log(data);
   if (status === "error") {

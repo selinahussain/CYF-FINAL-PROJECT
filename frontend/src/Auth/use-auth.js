@@ -24,7 +24,7 @@ function useProvideAuth() {
   const [, setToken] = useLocalStorage('token', '');
   
   const signin = (email, password, cb) => {
-    return fetch('http://localhost:3001/auth/login', {
+    return fetch(`${process.env.REACT_APP_URL}/auth/login`, {
       method: 'post',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password }),
@@ -40,7 +40,7 @@ function useProvideAuth() {
   };
 
   const signup = (name, email, password, password2, cb) => {
-    return fetch('http://localhost:3001/auth/register', {
+    return fetch(`${process.env.REACT_APP_URL}/auth/register`, {
       method: 'post',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password, password2, name }),
@@ -71,7 +71,7 @@ function useProvideAuth() {
   useEffect(() => {
     const token = JSON.parse(localStorage.getItem('token'));
 
-    fetch('http://localhost:3001/auth/token', {
+    fetch(`${process.env.REACT_APP_URL}/auth/token`, {
       method: 'post',
       headers: {
         'Content-Type': 'application/json',

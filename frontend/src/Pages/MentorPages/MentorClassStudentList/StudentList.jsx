@@ -11,7 +11,7 @@ import "antd/dist/antd.css";
 
 export default function StudentList() {
   let { status, data, error } = useFetch(
-    "http://localhost:3001/api/region/classes/studentList"
+    `${process.env.REACT_APP_URL}/api/region/classes/studentList`
   );
   if (status === "error") {
     return <div>Error: {error.message}</div>;

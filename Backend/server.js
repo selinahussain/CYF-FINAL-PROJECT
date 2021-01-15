@@ -10,7 +10,7 @@ const initializePassport = require ('./passportConfig');
 
 const PORT = process.env.PORT || 3001;
 const corsOptions = {
-  origin: 'http://localhost:3000',
+  origin: 'https://cyf-student-confidence-tracker.herokuapp.com',
   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
   credentials: true,
 };

@@ -15,7 +15,7 @@ import WestMidlandClasses from "../Classes/WestMidlands Classes/WestMidlandClass
 import ComingSoon from "./ComingSoon";
 
 const MentorRegions = () => {
-  let { status, data, error } = useFetch("http://localhost:3001/api/region");
+  let { status, data, error } = useFetch(`${process.env.REACT_APP_URL}/api/region`);
 
   if (status === "error") {
     return <div>Error: {error.message}</div>;
