@@ -43,7 +43,7 @@ const AllStudents = ({ data }) => {
         <div className="row">
           <div className="col-1">
             <Button
-              href="/West%20Midlands/West%20Midlands%20Class%201/Students"
+              href="/regions/classes/West%20Midlands"
               className="backLink btn-lg rounded-lg"
             >
               Back To Classes
@@ -80,13 +80,13 @@ const AllStudents = ({ data }) => {
           {students.map((student) => (
             <div className="moduleDiv col-6">
               <div className="text-center modules" key={student.id}>
-                <Link to={`/students/${student.id}`}>
+                <Link to={`/students/${student.name}`}>
                   <h2 className="">{student.name}</h2>
                 </Link>
               </div>
               <div>
                 <Route
-                  path={`/students/${student.id}`}
+                  path={`/students/${student.name}`}
                   component={MentorIndividualGradeList}
                 />
               </div>
