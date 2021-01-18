@@ -80,13 +80,13 @@ const AllStudents = ({ data }) => {
           {students.map((student) => (
             <div className="moduleDiv col-6">
               <div className="text-center modules" key={student.id}>
-                <Link to={`/students/${student.name}`}>
+                <Link to={`/students/${student.id}`}>
                   <h2 className="">{student.name}</h2>
                 </Link>
               </div>
               <div>
                 <Route
-                  path={`/students/${student.name}`}
+                  path={`/students/${student.id}`}
                   component={MentorIndividualGradeList}
                 />
               </div>
