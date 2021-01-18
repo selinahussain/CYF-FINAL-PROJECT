@@ -76,7 +76,7 @@ const GitTopicList = ({ data, gradeData }) => {
 
   const onSubmit = () => {
     let submitText = document.getElementById("submitText");
-    submitText.innerHTML= " You have submitted your preferences !";
+    submitText.innerHTML = " You have submitted your preferences !";
     submitText.styles.color = "green";
     const results = [];
     for (const [key, value] of Object.entries(state.selected)) {
@@ -159,9 +159,9 @@ const GitTopicList = ({ data, gradeData }) => {
           {" "}
           Submit
         </Button>
-      <h3 id = "submitText"> </h3>
-      </div>
       
+      </div>
+      <h3 id = "submitText"> </h3>
     </div>
   );
 };
