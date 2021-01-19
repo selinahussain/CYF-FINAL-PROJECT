@@ -69,7 +69,7 @@ const styling = {
             <p>
               Below are scores {grades[0].name}
               <br />
-              Here you are able to view the average grades of the modules that they have filled in so far. The highest 
+              Here you are able to view the average grades of the modules that they have filled in so far. The highest grade will be 100% which will be shown as a tick and this shows that the student feels like they have no concern in understanding the module. 
             </p>
           </div>
           <svg height="40" width="100%">
