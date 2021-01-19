@@ -74,13 +74,10 @@ const GitTopicList = ({ data, gradeData }) => {
     setState({ ...state, selected: gradeData });
   }, [gradeData]);
 
+
+
+
   const onSubmit = () => {
-    let submitText = document.getElementById("submitText");
-    submitText.innerHTML = " Your choices has been saved !";
-    submitText.style.color = "green";
-    
-
-
 
     const results = [];
     for (const [key, value] of Object.entries(state.selected)) {
@@ -163,7 +160,6 @@ const GitTopicList = ({ data, gradeData }) => {
           {" "}
           Submit
         </Button>
-        <p  id = "submitText"> </p>
       </div>
       
     </div>
